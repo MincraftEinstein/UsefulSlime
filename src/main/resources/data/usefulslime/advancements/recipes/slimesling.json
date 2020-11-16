@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"usefulslime:slimesling"
+		]
+	},
+	"criteria": {
+		"has_slime": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "forge:slimeballs"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "usefulslime:slimesling"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_slime",
+			"has_the_recipe"
+		]
+	]
+}
