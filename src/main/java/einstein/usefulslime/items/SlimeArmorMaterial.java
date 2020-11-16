@@ -38,9 +38,10 @@ public class SlimeArmorMaterial implements IArmorMaterial
     public float getToughness() {
         return 0.0f;
     }
-
+    
 	@Override
-	public float getKnockbackResistance() {
+	public float func_230304_f_() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 }

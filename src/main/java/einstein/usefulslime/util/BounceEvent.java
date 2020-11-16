@@ -28,7 +28,7 @@ public class BounceEvent {
 			if (entity.world.isRemote) {
 				entity.setMotion(entity.getMotion().x, entity.getMotion().y * -0.9, entity.getMotion().z);
 				entity.isAirBorne = true;
-				entity.setOnGround(false);
+				entity.func_230245_c_(false);
 				final double f = 0.9500000000000001;
 				entity.setMotion(entity.getMotion().x / f, entity.getMotion().y, entity.getMotion().z / f);
 			} else {

@@ -44,7 +44,7 @@ public class BounceHandler
                 event.player.setMotion(vec3d.x, this.bounce, vec3d.z);
                 this.bounceTick = 0;
             }
-            if (!this.entityLiving.isOnGround() && this.entityLiving.ticksExisted != this.bounceTick && (this.lastMovX != this.entityLiving.getMotion().x || this.lastMovZ != this.entityLiving.getMotion().z)) {
+            if (!this.entityLiving.func_233570_aj_() && this.entityLiving.ticksExisted != this.bounceTick && (this.lastMovX != this.entityLiving.getMotion().x || this.lastMovZ != this.entityLiving.getMotion().z)) {
                 final double f = 0.935;
                 final Vector3d vec3d2 = this.entityLiving.getMotion();
                 event.player.setMotion(vec3d2.x / f, vec3d2.y, vec3d2.z / f);
@@ -52,7 +52,7 @@ public class BounceHandler
                 this.lastMovX = this.entityLiving.getMotion().x;
                 this.lastMovZ = this.entityLiving.getMotion().z;
             }
-            if (this.wasInAir && this.entityLiving.isOnGround()) {
+            if (this.wasInAir && this.entityLiving.func_233570_aj_()) {
                 if (this.timer == 0) {
                     this.timer = this.entityLiving.ticksExisted;
                 }
