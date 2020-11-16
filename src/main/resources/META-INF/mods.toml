@@ -1,0 +1,50 @@
+modLoader="javafml" #mandatory
+
+loaderVersion="[34,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+
+license="All rights reserved"
+
+issueTrackerURL="http://my.issue.tracker/" #optional
+
+[[mods]] #mandatory
+
+modId="usefulslime" #mandatory
+
+version="1.0" #mandatory
+
+displayName="Useful Slime" #mandatory
+
+updateJSONURL="http://myurl.me/" #optional
+
+displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime" #optional
+
+logoFile="pack.png" #optional
+
+credits="The people who suggested the mod to me and Tinkers Construct for parts the orignal mod" #optional
+
+authors="MinecraftEinstein" #optional
+
+description='''
+Adds some new uses for slime
+'''
+
+[[dependencies.usefulslime]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[34,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+	
+[[dependencies.usefulslime]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4]"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.usefulslime]]
+    modId="einsteins_library"
+    mandatory=true
+    versionRange="[1.4,)"
+    ordering="NONE"
+    side="BOTH"

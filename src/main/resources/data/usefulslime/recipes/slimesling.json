@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"sts",
+		" b ",
+		" s "
+	],
+	"key": {
+		"t": {
+			"item": "minecraft:string"
+		},
+		"s": {
+			"tag": "forge:slimeballs"
+		},
+		"b": {
+			"item": "minecraft:slime_block"
+		}
+	},
+	"result": {
+		"item": "usefulslime:slimesling",
+		"count": 1
+	}
+}
