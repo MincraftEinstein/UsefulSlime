@@ -36,7 +36,7 @@ public class Slimesling extends Item {
 			return;
 		}
 		final PlayerEntity player = (PlayerEntity) entityLiving;
-		if (!player.isOnGround()) {
+		if (!player.func_233570_aj_()) {
 			return;
 		}
 		final int i = this.getUseDuration(stack) - timeLeft;
