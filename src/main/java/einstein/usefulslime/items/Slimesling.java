@@ -18,7 +18,8 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class Slimesling extends Item {
+public class Slimesling extends Item 
+{
 	public Slimesling(Properties properties) {
 		super(properties);
 	}

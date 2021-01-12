@@ -10,8 +10,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = UsefulSlime.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = { Dist.CLIENT })
-public class DataHandler {
-
+public class DataHandler 
+{
     @SubscribeEvent
     public static void setupBlockRenderLayer(final FMLClientSetupEvent event) {
     	RenderTypeLookup.setRenderLayer(ModInit.SLIPPERY_SLIME_BLOCK, RenderType.getTranslucent());
