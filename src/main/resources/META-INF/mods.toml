@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[35,)"
 license="All rights reserved"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 
@@ -19,14 +19,14 @@ Adds some new uses for slime
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[35,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.16.4,1.17)"
     ordering="NONE"
     side="BOTH"
 

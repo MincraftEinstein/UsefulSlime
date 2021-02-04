@@ -1,7 +1,7 @@
 package einstein.usefulslime.client;
 
+import einstein.usefulslime.ModInit;
 import einstein.usefulslime.UsefulSlime;
-import einstein.usefulslime.UsefulSlime.ModInit;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
@@ -16,5 +16,4 @@ public class DataHandler
     public static void setupBlockRenderLayer(final FMLClientSetupEvent event) {
     	RenderTypeLookup.setRenderLayer(ModInit.SLIPPERY_SLIME_BLOCK, RenderType.getTranslucent());
     }
-	
 }
