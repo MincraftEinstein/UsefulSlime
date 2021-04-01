@@ -10,8 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
-public class ModEventHandler
-{
+public class ModEventHandler {
 	@SubscribeEvent
 	public void onFall(final LivingFallEvent event) {
 		final LivingEntity entity = event.getEntityLiving();

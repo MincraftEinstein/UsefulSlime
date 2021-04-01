@@ -9,7 +9,6 @@ public class SlipperySlimeBlock extends BreakableBlock
 {
 	public SlipperySlimeBlock(Properties properties) {
 		super(properties);
-
 	}
 
 	@Override

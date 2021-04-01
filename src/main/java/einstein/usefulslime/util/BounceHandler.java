@@ -33,7 +33,7 @@ public class BounceHandler
         else {
             this.bounceTick = 0;
         }
-        BounceHandler.bouncingEntities.put((Entity)entityLiving, this);
+        BounceHandler.bouncingEntities.put(entityLiving, this);
     }
     
     @SubscribeEvent
@@ -57,7 +57,7 @@ public class BounceHandler
                     this.timer = this.entityLiving.ticksExisted;
                 }
                 else if (this.entityLiving.ticksExisted - this.timer > 5) {
-                    MinecraftForge.EVENT_BUS.unregister((Object)this);
+                    MinecraftForge.EVENT_BUS.unregister(this);
                     BounceHandler.bouncingEntities.remove(this.entityLiving);
                 }
             }
