@@ -1,17 +1,18 @@
 modLoader="javafml"
-loaderVersion="[35,)"
+loaderVersion="[34,)"
 license="All rights reserved"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 
 [[mods]]
 	modId="usefulslime"
-	version="1.1"
+	version="1.2"
 	displayName="Useful Slime"
 	#updateJSONURL="https://change.me.example.invalid/updates.json"
 	displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime"
 	logoFile="pack.png"
 	credits="The people who suggested the mod to me and Tinkers Construct for the orignal mod"
 	authors="MinecraftEinstein"
+	itemIcon="usefulslime:slimesling" #Used by Catalogue
 	description='''
 Adds some new uses for slime
 '''
@@ -19,14 +20,14 @@ Adds some new uses for slime
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[35,)"
+    versionRange="[34,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,1.17)"
+    versionRange="[1.16.3, 1.17)"
     ordering="NONE"
     side="BOTH"
 
