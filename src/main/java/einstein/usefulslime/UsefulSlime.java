@@ -1,35 +1,31 @@
 package einstein.usefulslime;
 
-import einstein.einsteins_library.util.RegistryHandler;
-import einstein.usefulslime.blocks.SlipperySlimeBlock;
-import einstein.usefulslime.items.SlimeBoots;
-import einstein.usefulslime.items.Slimesling;
-import einstein.usefulslime.util.ModEventHandler;
-import einstein.usefulslime.util.BounceHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 
-@Mod(UsefulSlime.MODID)
+@Mod(modid = UsefulSlime.MODID, name = UsefulSlime.NAME, version = UsefulSlime.VERSION)
 public class UsefulSlime
 {
-	public static final String MODID = "usefulslime";
-	
-	public UsefulSlime() {
-        MinecraftForge.EVENT_BUS.register(new ModEventHandler());
-        MinecraftForge.EVENT_BUS.register(BounceHandler.class);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-	
-	@Mod.EventBusSubscriber(modid = UsefulSlime.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-	public static class ModInit {
-		public static final Block SLIPPERY_SLIME_BLOCK = RegistryHandler.registerBlock(UsefulSlime.MODID, "slippery_slime_block", new SlipperySlimeBlock(Block.Properties.create(Material.CLAY, MaterialColor.GRASS).slipperiness(1.5F).notSolid().sound(SoundType.SLIME)), ItemGroup.TRANSPORTATION);
-		public static final Item SLIMESLING = RegistryHandler.registerItem(UsefulSlime.MODID, "slimesling", new Slimesling(new Item.Properties().maxStackSize(1).group(ItemGroup.TOOLS)));
-		public static final Item SLIME_BOOTS = RegistryHandler.registerItem(UsefulSlime.MODID, "slime_boots", new SlimeBoots(new Item.Properties().group(ItemGroup.COMBAT)));
-	}
+    public static final String MODID = "examplemod";
+    public static final String NAME = "Example Mod";
+    public static final String VERSION = "1.0";
+
+    private static Logger logger;
+
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        logger = event.getModLog();
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        // some example code
+        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    }
 }
