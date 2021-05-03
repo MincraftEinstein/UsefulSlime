@@ -34,6 +34,6 @@ Adds some new uses for slime
 [[dependencies.usefulslime]]
     modId="einsteins_library"
     mandatory=true
-    versionRange="[1.4,)"
+    versionRange="[2.0,)"
     ordering="NONE"
     side="BOTH"
