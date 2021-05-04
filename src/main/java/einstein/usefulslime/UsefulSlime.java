@@ -1,31 +1,26 @@
 package einstein.usefulslime;
 
-import net.minecraft.init.Blocks;
+
+import einstein.usefulslime.proxy.CommonProxy;
+import einstein.usefulslime.util.BounceHandler;
+import einstein.usefulslime.util.ModEventHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.fml.common.SidedProxy;
 
 @Mod(modid = UsefulSlime.MODID, name = UsefulSlime.NAME, version = UsefulSlime.VERSION)
 public class UsefulSlime
 {
-    public static final String MODID = "examplemod";
-    public static final String NAME = "Example Mod";
-    public static final String VERSION = "1.0";
+    public static final String MODID = "usefulslime";
+    public static final String NAME = "Useful Slime";
+    public static final String VERSION = "1.2";
 
-    private static Logger logger;
-
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        logger = event.getModLog();
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-        // some example code
-        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
+    @SidedProxy(clientSide = "einstein.usefulslime.proxy.ClientProxy", serverSide = "einstein.usefulslime.proxy.CommonProxy")
+    public static CommonProxy proxy;
+    
+    public UsefulSlime() {
+		MinecraftForge.EVENT_BUS.register(new ModEventHandler());
+		MinecraftForge.EVENT_BUS.register(BounceHandler.class);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 }

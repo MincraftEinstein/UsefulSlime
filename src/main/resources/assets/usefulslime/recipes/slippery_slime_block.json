@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "b",
+        "w"
+    ],
+    "key": {
+        "b": {
+            "item": "minecraft:slime"
+        },
+        "w": {
+            "item": "minecraft:water_bucket"
+        }
+    },
+    "result": {
+        "item": "usefulslime:slippery_slime_block",
+        "count": 1
+    }
+}
