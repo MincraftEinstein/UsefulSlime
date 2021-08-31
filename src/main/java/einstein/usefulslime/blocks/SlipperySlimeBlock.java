@@ -1,18 +1,19 @@
 package einstein.usefulslime.blocks;
 
-import net.minecraft.block.BreakableBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.HalfTransparentBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class SlipperySlimeBlock extends BreakableBlock
+public class SlipperySlimeBlock extends HalfTransparentBlock
 {
 	public SlipperySlimeBlock(Properties properties) {
 		super(properties);
 	}
 
 	@Override
-	public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-		entityIn.onLivingFall(fallDistance, 0.0F);
+	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+		entity.causeFallDamage(fallDistance, 0.0F, null);
 	}
 }

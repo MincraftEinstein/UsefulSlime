@@ -1,33 +1,33 @@
 package einstein.usefulslime.items;
 
 import einstein.usefulslime.UsefulSlime;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
 
-public class SlimeArmorMaterial implements IArmorMaterial
+public class SlimeArmorMaterial implements ArmorMaterial
 {
-    public static IArmorMaterial instance = new SlimeArmorMaterial();
+    public static ArmorMaterial instance = new SlimeArmorMaterial();
     
-    public int getDurability(final EquipmentSlotType slotIn) {
+    public int getDurabilityForSlot(final EquipmentSlot slotIn) {
         return -1;
     }
     
-    public int getDamageReductionAmount(final EquipmentSlotType slotIn) {
+    public int getDefenseForSlot(final EquipmentSlot slotIn) {
         return 0;
     }
     
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return 0;
     }
     
-    public SoundEvent getSoundEvent() {
-        return SoundEvents.BLOCK_SLIME_BLOCK_FALL;
+    public SoundEvent getEquipSound() {
+        return SoundEvents.SLIME_BLOCK_FALL;
     }
     
-    public Ingredient getRepairMaterial() {
+    public Ingredient getRepairIngredient() {
         return null;
     }
     

@@ -3,19 +3,19 @@ package einstein.usefulslime.items;
 import javax.annotation.Nonnull;
 
 import einstein.usefulslime.util.BounceHandler;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Slimesling extends Item 
@@ -25,18 +25,18 @@ public class Slimesling extends Item
 	}
 
 	@Nonnull
-	public ActionResult<ItemStack> onItemRightClick(final World worldIn, final PlayerEntity playerIn, final Hand hand) {
-		final ItemStack itemStackIn = playerIn.getHeldItem(hand);
-		playerIn.setActiveHand(hand);
-		return (ActionResult<ItemStack>) new ActionResult(ActionResultType.SUCCESS, (Object) itemStackIn);
+	public InteractionResultHolder<ItemStack> use(final Level level, final Player player, final InteractionHand hand) {
+		final ItemStack itemStackIn = player.getItemInHand(hand);
+		player.startUsingItem(hand);
+		return new InteractionResultHolder(InteractionResult.SUCCESS, itemStackIn);
 	}
 
-	public void onPlayerStoppedUsing(final ItemStack stack, final World worldIn, final LivingEntity entityLiving,
+	public void releaseUsing(final ItemStack stack, final Level level, final LivingEntity entityLiving,
 			final int timeLeft) {
-		if (!(entityLiving instanceof PlayerEntity)) {
+		if (!(entityLiving instanceof Player)) {
 			return;
 		}
-		final PlayerEntity player = (PlayerEntity) entityLiving;
+		final Player player = (Player) entityLiving;
 		if (!player.isOnGround()) {
 			return;
 		}
@@ -48,17 +48,17 @@ public class Slimesling extends Item
 			f = 6.0f;
 		}
 		f *= 1.5;
-		final RayTraceResult mop = rayTrace(worldIn, player, RayTraceContext.FluidMode.NONE);
-		if (mop != null && mop.getType() == RayTraceResult.Type.BLOCK) {
-			final Vector3d vec = player.getLookVec().normalize();
-			player.addVelocity(vec.x * -f, vec.y * -f / 3.0, vec.z * -f);
-			player.playSound(SoundEvents.ENTITY_SLIME_JUMP_SMALL, 1.0f, 1.0f);
+		final HitResult mop = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
+		if (mop != null && mop.getType() == HitResult.Type.BLOCK) {
+			final Vec3 vec = player.getLookAngle().normalize();
+			player.push(vec.x * -f, vec.y * -f / 3.0, vec.z * -f);
+			player.playSound(SoundEvents.SLIME_JUMP_SMALL, 1.0f, 1.0f);
 			BounceHandler.addBounceHandler((LivingEntity) player);
 		}
 	}
 
-	public UseAction getUseAction(final ItemStack stack) {
-		return UseAction.BOW;
+	public UseAnim getUseAnimation(final ItemStack stack) {
+		return UseAnim.BOW;
 	}
 
 	public int getUseDuration(final ItemStack stack) {
