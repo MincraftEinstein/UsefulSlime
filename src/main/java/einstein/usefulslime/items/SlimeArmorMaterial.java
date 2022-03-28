@@ -36,7 +36,7 @@ public class SlimeArmorMaterial implements ArmorMaterial
     }
     
     public float getToughness() {
-        return 0.0f;
+        return 0.0F;
     }
 
 	@Override

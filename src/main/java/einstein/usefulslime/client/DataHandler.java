@@ -14,6 +14,6 @@ public class DataHandler
 {
     @SubscribeEvent
     public static void setupBlockRenderLayer(final FMLClientSetupEvent event) {
-    	ItemBlockRenderTypes.setRenderLayer(ModInit.SLIPPERY_SLIME_BLOCK, RenderType.translucent());
+    	ItemBlockRenderTypes.setRenderLayer(ModInit.SLIPPERY_SLIME_BLOCK.get(), RenderType.translucent());
     }
 }
