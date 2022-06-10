@@ -24,6 +24,7 @@ public class Slimesling extends Item
 		super(properties);
 	}
 
+	@Override
 	@Nonnull
 	public InteractionResultHolder<ItemStack> use(final Level level, final Player player, final InteractionHand hand) {
 		final ItemStack itemStackIn = player.getItemInHand(hand);
@@ -31,6 +32,7 @@ public class Slimesling extends Item
 		return new InteractionResultHolder(InteractionResult.SUCCESS, itemStackIn);
 	}
 
+	@Override
 	public void releaseUsing(final ItemStack stack, final Level level, final LivingEntity entityLiving,
 			final int timeLeft) {
 		if (!(entityLiving instanceof Player)) {
@@ -57,10 +59,12 @@ public class Slimesling extends Item
 		}
 	}
 
+	@Override
 	public UseAnim getUseAnimation(final ItemStack stack) {
 		return UseAnim.BOW;
 	}
 
+	@Override
 	public int getUseDuration(final ItemStack stack) {
 		return 72000;
 	}
