@@ -2,7 +2,7 @@ package einstein.usefulslime;
 
 import einstein.usefulslime.blocks.SlipperySlimeBlock;
 import einstein.usefulslime.items.SlimeBoots;
-import einstein.usefulslime.items.Slimesling;
+import einstein.usefulslime.items.SlimeSlingItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -15,11 +15,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModInit {
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UsefulSlime.MODID);
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, UsefulSlime.MODID);
-	
-	public static final RegistryObject<Block> SLIPPERY_SLIME_BLOCK = BLOCKS.register("slippery_slime_block", () -> new SlipperySlimeBlock(Block.Properties.of(Material.CLAY, MaterialColor.GRASS).friction(1.5F).noOcclusion().sound(SoundType.SLIME_BLOCK)));
-	public static final RegistryObject<Item> SLIPPERY_SLIME_BLOCK_ITEM = ITEMS.register("slippery_slime_block", () -> new BlockItem(SLIPPERY_SLIME_BLOCK.get(), new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
-	public static final RegistryObject<Item> SLIMESLING = ITEMS.register("slimesling", () -> new Slimesling(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
-	public static final RegistryObject<Item> SLIME_BOOTS = ITEMS.register("slime_boots", () -> new SlimeBoots(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UsefulSlime.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, UsefulSlime.MODID);
+
+    public static final RegistryObject<Block> SLIPPERY_SLIME_BLOCK = BLOCKS.register("slippery_slime_block", () -> new SlipperySlimeBlock(Block.Properties.of(Material.CLAY, MaterialColor.GRASS).friction(1.5F).noOcclusion().sound(SoundType.SLIME_BLOCK)));
+    public static final RegistryObject<Item> SLIPPERY_SLIME_BLOCK_ITEM = ITEMS.register("slippery_slime_block", () -> new BlockItem(SLIPPERY_SLIME_BLOCK.get(), new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
+    public static final RegistryObject<Item> SLIMESLING = ITEMS.register("slimesling", () -> new SlimeSlingItem(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
+    public static final RegistryObject<Item> SLIME_BOOTS = ITEMS.register("slime_boots", () -> new SlimeBoots(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 }

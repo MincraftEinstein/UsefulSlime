@@ -1,7 +1,5 @@
 package einstein.usefulslime.util;
 
-import java.util.IdentityHashMap;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -10,77 +8,79 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.NotNull;
 
-public class BounceHandler
-{
-    private static final IdentityHashMap<Entity, BounceHandler> bouncingEntities = new IdentityHashMap<Entity, BounceHandler>();
-    public final LivingEntity entityLiving;
+import java.util.IdentityHashMap;
+
+public class BounceHandler {
+    private static final IdentityHashMap<Entity, BounceHandler> bouncingEntities = new IdentityHashMap<>();
+    public final LivingEntity entity;
     private int timer;
     private boolean wasInAir;
     private double bounce;
     private int bounceTick;
-    private double lastMovX;
-    private double lastMovZ;
-    
-    public BounceHandler(final LivingEntity entityLiving, final double bounce) {
-        this.entityLiving = entityLiving;
+    private double lastMoveX;
+    private double lastMoveZ;
+
+    public BounceHandler(final LivingEntity entity, final double bounce) {
+        this.entity = entity;
         this.timer = 0;
         this.wasInAir = false;
         this.bounce = bounce;
-        if (bounce != 0.0) {
-            this.bounceTick = entityLiving.tickCount;
+
+        if (bounce != 0) {
+            bounceTick = entity.tickCount;
+        } else {
+            bounceTick = 0;
         }
-        else {
-            this.bounceTick = 0;
-        }
-        BounceHandler.bouncingEntities.put(entityLiving, this);
+
+        BounceHandler.bouncingEntities.put(entity, this);
     }
-    
+
     @SubscribeEvent
-    public void playerTickPost(final TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.player == this.entityLiving && !event.player.isFallFlying()) {
-            if (event.player.tickCount == this.bounceTick) {
-                final Vec3 vec3d = event.player.getDeltaMovement();
-                event.player.setDeltaMovement(vec3d.x, this.bounce, vec3d.z);
-                this.bounceTick = 0;
+    public void playerTick(final TickEvent.@NotNull PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && event.player == entity && !event.player.isFallFlying()) {
+            if (event.player.tickCount == bounceTick) {
+                final Vec3 vec3 = event.player.getDeltaMovement();
+                event.player.setDeltaMovement(vec3.x, bounce, vec3.z);
+                bounceTick = 0;
             }
-            if (!this.entityLiving.isOnGround() && this.entityLiving.tickCount != this.bounceTick && (this.lastMovX != this.entityLiving.getDeltaMovement().x || this.lastMovZ != this.entityLiving.getDeltaMovement().z)) {
-                final double f = 0.935;
-                final Vec3 vec3d2 = this.entityLiving.getDeltaMovement();
-                event.player.setDeltaMovement(vec3d2.x / f, vec3d2.y, vec3d2.z / f);
-                this.entityLiving.hasImpulse = true;
-                this.lastMovX = this.entityLiving.getDeltaMovement().x;
-                this.lastMovZ = this.entityLiving.getDeltaMovement().z;
+            if (!entity.isOnGround() && entity.tickCount != bounceTick && (lastMoveX != entity.getDeltaMovement().x || lastMoveZ != entity.getDeltaMovement().z)) {
+                final double d = 0.935D;
+                final Vec3 vec32 = entity.getDeltaMovement();
+                event.player.setDeltaMovement(vec32.x / d, vec32.y, vec32.z / d);
+                entity.hasImpulse = true;
+                lastMoveX = entity.getDeltaMovement().x;
+                lastMoveZ = entity.getDeltaMovement().z;
             }
-            if (this.wasInAir && this.entityLiving.isOnGround()) {
-                if (this.timer == 0) {
-                    this.timer = this.entityLiving.tickCount;
-                }
-                else if (this.entityLiving.tickCount - this.timer > 5) {
+            if (wasInAir && entity.isOnGround()) {
+                if (timer == 0) {
+                    timer = entity.tickCount;
+                } else if (entity.tickCount - timer > 5) {
                     MinecraftForge.EVENT_BUS.unregister(this);
-                    BounceHandler.bouncingEntities.remove(this.entityLiving);
+                    BounceHandler.bouncingEntities.remove(entity);
                 }
-            }
-            else {
-                this.timer = 0;
-                this.wasInAir = true;
+            } else {
+                timer = 0;
+                wasInAir = true;
             }
         }
     }
-    
+
     public static void addBounceHandler(final LivingEntity entity) {
-        addBounceHandler(entity, 0.0);
+        addBounceHandler(entity, 0);
     }
-    
+
     public static void addBounceHandler(final LivingEntity entity, final double bounce) {
         if (!(entity instanceof Player) || entity instanceof FakePlayer) {
             return;
         }
+
         final BounceHandler handler = BounceHandler.bouncingEntities.get(entity);
+
         if (handler == null) {
             MinecraftForge.EVENT_BUS.register(new BounceHandler(entity, bounce));
-        }
-        else if (bounce != 0.0) {
+        } else if (bounce != 0) {
             handler.bounce = bounce;
             handler.bounceTick = entity.tickCount;
         }
