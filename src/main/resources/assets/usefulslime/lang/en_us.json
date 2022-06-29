@@ -1,8 +1,5 @@
 {
-	// BLOCKS
 	"block.usefulslime.slippery_slime_block": "Slippery Slime Block",
-	
-	// ITEMS
-	"item.usefulslime.slimesling": "Slimesling",
+	"item.usefulslime.slimesling": "Slime sling",
 	"item.usefulslime.slime_boots": "Slime Boots"
 }
