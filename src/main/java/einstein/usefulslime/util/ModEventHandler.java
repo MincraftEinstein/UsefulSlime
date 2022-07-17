@@ -13,7 +13,7 @@ public class ModEventHandler {
 
     @SubscribeEvent
     public void onFall(final @NotNull LivingFallEvent event) {
-        final LivingEntity entity = event.getEntityLiving();
+        final LivingEntity entity = event.getEntity();
 
         if (entity == null) {
             return;

@@ -17,11 +17,11 @@ public class UsefulSlime {
     public UsefulSlime() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setupBlockRenderLayer);
+        ModInit.ITEMS.register(modEventBus);
+        ModInit.BLOCKS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(new ModEventHandler());
         MinecraftForge.EVENT_BUS.register(BounceHandler.class);
         MinecraftForge.EVENT_BUS.register(this);
-        ModInit.ITEMS.register(modEventBus);
-        ModInit.BLOCKS.register(modEventBus);
     }
 
     public void setupBlockRenderLayer(final FMLClientSetupEvent event) {

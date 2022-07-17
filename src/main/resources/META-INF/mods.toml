@@ -22,7 +22,7 @@ Adds some new uses for slime
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[41.0.98,)"
     ordering="NONE"
     side="BOTH"
 
