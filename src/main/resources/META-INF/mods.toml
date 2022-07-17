@@ -1,11 +1,11 @@
 modLoader="javafml"
 loaderVersion="[41,)"
 license="All rights reserved"
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
 [[mods]]
 	modId="usefulslime"
-	version="1.6"
+	version="1.7"
 	displayName="Useful Slime"
 	#updateJSONURL="https://change.me.example.invalid/updates.json"
 	displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime"
