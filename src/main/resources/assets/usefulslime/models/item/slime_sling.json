@@ -23,6 +23,6 @@
         }
     },
     "textures": {
-        "layer0": "usefulslime:item/slimesling"
+        "layer0": "usefulslime:item/slime_sling"
     }
 }
