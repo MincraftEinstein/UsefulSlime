@@ -33,7 +33,6 @@ public class UsefulSlime {
 
     @SubscribeEvent
     void missingMappings(MissingMappingsEvent event) {
-
         for (MissingMappingsEvent.Mapping mapping : event.getMappings(ForgeRegistries.ITEMS.getRegistryKey(), MODID)) {
             if (mapping.getKey().getPath().equals("slimesling")) {
                 mapping.remap(ModInit.SLIME_SLING.get());
