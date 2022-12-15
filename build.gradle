@@ -104,6 +104,14 @@ jar {
     }
 }
 
+processResources {
+    inputs.property "version", "${mod_v}"
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": "${mod_v}"
+    }
+}
+
 jar.finalizedBy('reobfJar')
 
 publishing {
