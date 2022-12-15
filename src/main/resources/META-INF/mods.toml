@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[41,)"
+loaderVersion="[44,)"
 license="All rights reserved"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
@@ -22,13 +22,13 @@ Adds some new uses for slime
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.98,)"
+    versionRange="[44.0.18,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19, 1.20)"
+    versionRange="[1.19.3, 1.20)"
     ordering="NONE"
     side="BOTH"
