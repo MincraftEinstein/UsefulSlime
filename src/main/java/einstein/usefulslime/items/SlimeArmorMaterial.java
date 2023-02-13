@@ -27,7 +27,7 @@ public class SlimeArmorMaterial implements ArmorMaterial {
     }
 
     public Ingredient getRepairIngredient() {
-        return null;
+        return Ingredient.EMPTY;
     }
 
     public String getName() {
