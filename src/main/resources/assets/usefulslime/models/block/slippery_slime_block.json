@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/cube_column",
+	"render_type": "minecraft:translucent",
 	"textures": {
 		"center": "minecraft:block/slime_block",
 		"end": "usefulslime:block/slippery_slime_block_top",
