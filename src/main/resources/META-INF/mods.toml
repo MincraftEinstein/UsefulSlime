@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
 [[mods]]
 	modId="usefulslime"
-	version="1.8"
+	version="1.9"
 	displayName="Useful Slime"
 	#updateJSONURL="https://change.me.example.invalid/updates.json"
 	displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime"
