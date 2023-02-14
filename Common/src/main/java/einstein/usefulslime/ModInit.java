@@ -1,0 +1,24 @@
+package einstein.usefulslime;
+
+import einstein.usefulslime.blocks.SlipperySlimeBlock;
+import einstein.usefulslime.items.SlimeBoots;
+import einstein.usefulslime.items.SlimeSlingItem;
+import einstein.usefulslime.platform.Services;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+
+import java.util.function.Supplier;
+
+public class ModInit {
+
+    public static final Supplier<Block> SLIPPERY_SLIME_BLOCK = Services.REGISTRY.registerBlock("slippery_slime_block", () -> new SlipperySlimeBlock(Block.Properties.of(Material.CLAY, MaterialColor.GRASS).friction(1.5F).noOcclusion().sound(SoundType.SLIME_BLOCK)));
+    public static final Supplier<Item> SLIPPERY_SLIME_BLOCK_ITEM = Services.REGISTRY.registerItem("slippery_slime_block", () -> new BlockItem(SLIPPERY_SLIME_BLOCK.get(), new Item.Properties().stacksTo(1)));
+    public static final Supplier<Item> SLIME_SLING = Services.REGISTRY.registerItem("slime_sling", () -> new SlimeSlingItem(new Item.Properties().stacksTo(1)));
+    public static final Supplier<Item> SLIME_BOOTS = Services.REGISTRY.registerItem("slime_boots", () -> new SlimeBoots(new Item.Properties()));
+
+    public static void init() {}
+}

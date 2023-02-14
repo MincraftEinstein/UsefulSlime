@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "usefulslime",
+  "version": "${version}",
+  "name": "Useful Slime",
+  "description": "Adds some new uses for slime",
+  "authors": [
+    "MincraftEinstein"
+  ],
+  "contact": {
+    "homepage": "http://curseforge.com/minecraft/mc-mods/useful-slime",
+    "sources": "https://github.com/MincraftEinstein/UsefulSlime",
+    "issues": "https://github.com/MincraftEinstein/UsefulSlime/issues"
+  },
+  "license": "All rights reserved",
+  "icon": "pack.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "einstein.usefulslime.UsefulSlimeFabric"
+    ],
+    "client": [
+      "einstein.usefulslime.UsefulSlimeClient"
+    ]
+  },
+  "mixins": [
+    "usefulslime.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14",
+    "fabric": "*",
+    "minecraft": "1.19.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

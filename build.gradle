@@ -1,132 +1,47 @@
-plugins {
-    id 'eclipse'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.+'
-}
-
-version = "${mod_v}-${mc_v}"
-group = "einstein.${modid}"
-archivesBaseName = "${modid}"
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: 'official', version: "${mc_v}"
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', archivesBaseName
-
-            mods {
-                usefulslime {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', archivesBaseName
-
-            mods {
-                usefulslime {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', archivesBaseName
-
-            mods {
-                usefulslime {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', archivesBaseName, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                usefulslime {
-                    source sourceSets.main
-                }
-            }
+subprojects {
+    apply plugin: 'java'
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+        
+    jar {
+        manifest {
+            attributes([
+                    "Specification-Title": "${mod_name}",
+                    "Specification-Vendor": "${mod_author}",
+                    "Specification-Version": "1",
+                    "Implementation-Title": "${mod_name}",
+                    "Implementation-Version": "${mod_v}",
+                    "Implementation-Vendor": "${mod_author}",
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            ])
         }
     }
-}
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-repositories {
-}
-
-dependencies {
-    minecraft "net.minecraftforge:forge:${mc_v}-${forge_v}"
-}
-
-jar {
-    manifest {
-        attributes([
-                "Specification-Title" : "Useful Slime",
-                "Specification-Vendor" : "MincraftEinstein",
-                "Specification-Version" : "1",
-                "Implementation-Title" : "Useful Slime",
-                "Implementation-Version" : "${mod_v}",
-                "Implementation-Vendor" : "MincraftEinstein",
-                "Implementation-Timestamp" : new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-
-processResources {
-    inputs.property "version", "${mod_v}"
-
-    filesMatching("META-INF/mods.toml") {
-        expand "version": "${mod_v}"
-    }
-}
-
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
+    
     repositories {
+
+        mavenCentral()
+
         maven {
-            url "file://${project.projectDir}/mcmodsrepo"
+            name = 'Sponge / Mixin'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+
+        maven {
+            name = 'BlameJared Maven (CrT / Bookshelf)'
+            url = 'https://maven.blamejared.com'
         }
     }
-}
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    tasks.withType(JavaCompile).configureEach {
+    
+        it.options.encoding = 'UTF-8'
+        it.options.release = 17
+    }
+
+    // Disables Gradle's custom module metadata from being published to maven. The
+    // metadata includes mapped dependencies which are not reasonably consumable by
+    // other mod developers.
+    tasks.withType(GenerateModuleMetadata) {
+
+        enabled = false
+    }
 }
