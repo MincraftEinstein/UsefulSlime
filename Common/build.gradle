@@ -11,8 +11,6 @@ archivesBaseName = "${mod_name}-common-${mc_v}"
 minecraft {
     version("${mc_v}")
 
-    // accessWideners(file("src/main/resources/usefulslimeCommon.accesswidener"))
-
     runs {
         if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
             server(project.hasProperty('common_server_run_name') ? project.findProperty('common_server_run_name') : 'vanilla_server') {

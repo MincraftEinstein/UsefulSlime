@@ -19,8 +19,6 @@ dependencies {
 }
 
 loom {
-    // accessWidenerPath = project(":Common").file("src/main/resources/usefulslimeCommon.accesswidener")
-
     mixin.defaultRefmapName = "${mod_id}.refmap.json"
 
     runs {
