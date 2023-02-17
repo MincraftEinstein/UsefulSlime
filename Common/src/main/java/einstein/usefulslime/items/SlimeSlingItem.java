@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class SlimeSlingItem extends Item {
+
     public SlimeSlingItem(Properties properties) {
         super(properties);
     }

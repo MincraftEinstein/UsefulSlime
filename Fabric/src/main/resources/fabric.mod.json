@@ -3,7 +3,7 @@
   "id": "usefulslime",
   "version": "${version}",
   "name": "Useful Slime",
-  "description": "Adds some new uses for slime",
+  "description": "Adds some new uses for slime\n\nLicense:\nThe following directories (both in the jars and on GitHub) are under All Rights Reserved:\nCommon/src/main/resources\nForge/src/main/resources\nFabric/src/main/resources\n\nAll other directories and jars are under the MIT license",
   "authors": [
     "MincraftEinstein"
   ],
@@ -12,7 +12,7 @@
     "sources": "https://github.com/MincraftEinstein/UsefulSlime",
     "issues": "https://github.com/MincraftEinstein/UsefulSlime/issues"
   },
-  "license": "All rights reserved",
+  "license": "Custom license",
   "icon": "pack.png",
   "environment": "*",
   "entrypoints": {

@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[44,)"
-license="All rights reserved"
+license="Custom license"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
 [[mods]]
@@ -14,6 +14,14 @@ issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 	authors="MincraftEinstein"
 	description='''
 Adds some new uses for slime
+
+License:
+The following directories (both in the jars and on GitHub) are under All Rights Reserved:
+Common/src/main/resources
+Forge/src/main/resources
+Fabric/src/main/resources
+
+All other directories and jars are under the MIT license
 '''
 
 [modproperties.usefulslime]

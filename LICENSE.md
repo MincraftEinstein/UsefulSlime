@@ -1,4 +1,4 @@
-### The following directories are under All Rights Reserved:
+### The following directories (both in the jars and on GitHub) are under All Rights Reserved:
 Common/src/main/resources
 
 Forge/src/main/resources
