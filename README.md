@@ -25,11 +25,6 @@ This mod adds a retextured version of the slime sling and slime boots from [Tink
 
 ---
 
-### **💬 Translators**
-Russian: (Author name has unfortunately been lost to time)
-
----
-
 ### **📚 FAQ**
 
 **Q:** Why don't the Slime Boots bounce right?
@@ -39,6 +34,11 @@ Russian: (Author name has unfortunately been lost to time)
 **Q:** Can you make a Fabric port for {some older mc version}
 
 **A:** No, I don't back port. For older versions check out this mod [here](https://www.curseforge.com/minecraft/mc-mods/slime-sling) by Flytre7
+
+---
+
+### **💬 Translators**
+Russian: (Author name has unfortunately been lost to time)
 
 ---
 
