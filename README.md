@@ -1,8 +1,8 @@
-
 # Useful Slime
 
-![Mod Loader](https://img.shields.io/badge/Mod%20Loader-Forge%20%26%20Fabric-green?style=for-the-badge)
-[![Curseforge Page](https://img.shields.io/badge/Curseforge-Page-orange?style=for-the-badge&logo=curseforge "Curseforge page")](https://www.curseforge.com/minecraft/mc-mods/useful-slime)
+![Mod Loaders](https://img.shields.io/badge/Mod%20Loaders-Forge%20%26%20Fabric-green?style=for-the-badge)
+[![Curseforge Forge Page](https://img.shields.io/badge/Curseforge%20Page-Forge-orange?style=for-the-badge&logo=curseforge "Curseforge Forge page")](https://www.curseforge.com/minecraft/mc-mods/useful-slime)
+[![Curseforge Fabric Page](https://img.shields.io/badge/Curseforge%20Page-Fabric-orange?style=for-the-badge&logo=curseforge "Curseforge Fabric page")](https://www.curseforge.com/minecraft/mc-mods/useful-slime-fabric)
 [![Modrinth](https://img.shields.io/badge/Modrinth-Page-1bd96a?style=for-the-badge "Modrinth page")](https://modrinth.com/mod/useful-slime)
 
 ### **📘 Description**
@@ -25,6 +25,11 @@ This mod adds a retextured version of the slime sling and slime boots from [Tink
 
 ---
 
+### **💬 Translators**
+Russian: (Author name has unfortuanly been lost to time)
+
+---
+
 ### **📚 FAQ**
 
 **Q:** Why don't the Slime Boots bounce right?
@@ -38,3 +43,7 @@ This mod adds a retextured version of the slime sling and slime boots from [Tink
 ---
 
 [![Kinetic Hosting Banner](https://i.imgur.com/u6Fn0I0.png)](https://billing.kinetichosting.net/aff.php?aff=124)
+
+---
+
+Repository created from [MultiLoader-Template](https://github.com/jaredlll08/MultiLoader-Template/tree/1.19)
