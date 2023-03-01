@@ -42,12 +42,14 @@ public class UsefulSlime {
                 entity.setOnGround(false);
                 final double d = 0.9500000000000001D;
                 entity.setDeltaMovement(entity.getDeltaMovement().x / d, entity.getDeltaMovement().y, entity.getDeltaMovement().z / d);
-            } else {
+            }
+            else {
                 data.setCanceled(true);
             }
             entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
             BounceHandler.addBounceHandler(entity, entity.getDeltaMovement().y);
-        } else if (!entity.level.isClientSide && entity.isShiftKeyDown()) {
+        }
+        else if (!entity.level.isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
         }
     }
