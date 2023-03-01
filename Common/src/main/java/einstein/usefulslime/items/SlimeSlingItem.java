@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -57,6 +58,11 @@ public class SlimeSlingItem extends Item {
 
         if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
             final Vec3 vec3 = player.getLookAngle().normalize();
+
+            if (player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof SlimeArmor) {
+                i += 2;
+            }
+
             player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
             player.playSound(SoundEvents.SLIME_JUMP_SMALL, 1, 1);
             BounceHandler.addBounceHandler(player);

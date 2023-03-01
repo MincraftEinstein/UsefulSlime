@@ -1,6 +1,6 @@
 package einstein.usefulslime;
 
-import einstein.usefulslime.items.SlimeBoots;
+import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.sounds.SoundEvents;
@@ -29,7 +29,7 @@ public class UsefulSlime {
 
         final ItemStack feetSlot = entity.getItemBySlot(EquipmentSlot.FEET);
 
-        if (!(feetSlot.getItem() instanceof SlimeBoots)) {
+        if (!(feetSlot.getItem() instanceof SlimeArmor)) {
             return;
         }
 
