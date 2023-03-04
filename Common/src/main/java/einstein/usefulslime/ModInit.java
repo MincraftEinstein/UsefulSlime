@@ -21,6 +21,8 @@ public class ModInit {
     public static final Supplier<Item> SLIME_SLING = Services.REGISTRY.registerItem("slime_sling", () -> new SlimeSlingItem(new Item.Properties().stacksTo(1)));
     public static final Supplier<Item> SLIME_BOOTS = Services.REGISTRY.registerItem("slime_boots", () -> new SlimeArmor(new Item.Properties(), EquipmentSlot.FEET));
     public static final Supplier<Item> SLIME_LEGGINGS = Services.REGISTRY.registerItem("slime_leggings", () -> new SlimeArmor(new Item.Properties(), EquipmentSlot.LEGS));
+    public static final Supplier<Item> SLIME_CHESTPLATE = Services.REGISTRY.registerItem("slime_chestplate", () -> new SlimeArmor(new Item.Properties(), EquipmentSlot.CHEST));
+    public static final Supplier<Item> SLIME_HELMET = Services.REGISTRY.registerItem("slime_helmet", () -> new SlimeArmor(new Item.Properties(), EquipmentSlot.HEAD));
 
     public static void init() {}
 }

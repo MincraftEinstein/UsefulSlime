@@ -18,6 +18,9 @@ public class UsefulSlimeFabric implements ModInitializer {
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> {
             entries.accept(ModInit.SLIME_BOOTS.get());
+            entries.accept(ModInit.SLIME_LEGGINGS.get());
+            entries.accept(ModInit.SLIME_CHESTPLATE.get());
+            entries.accept(ModInit.SLIME_HELMET.get());
         });
     }
 }

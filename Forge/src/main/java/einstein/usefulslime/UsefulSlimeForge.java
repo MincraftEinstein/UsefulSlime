@@ -61,6 +61,9 @@ public class UsefulSlimeForge {
         }
         else if (event.getTab() == CreativeModeTabs.COMBAT) {
             event.accept(ModInit.SLIME_BOOTS);
+            event.accept(ModInit.SLIME_LEGGINGS);
+            event.accept(ModInit.SLIME_CHESTPLATE);
+            event.accept(ModInit.SLIME_HELMET);
         }
     }
 

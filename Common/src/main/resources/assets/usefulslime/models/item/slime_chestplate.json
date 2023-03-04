@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "usefulslime:item/slime_chestplate"
+    }
+}
