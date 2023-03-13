@@ -1,5 +1,6 @@
 package einstein.usefulslime.items;
 
+import einstein.usefulslime.ModInit;
 import einstein.usefulslime.util.BounceHandler;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -59,7 +60,11 @@ public class SlimeSlingItem extends Item {
         if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
             final Vec3 vec3 = player.getLookAngle().normalize();
 
-            if (player.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof SlimeArmor) {
+            if (player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModInit.SLIME_CHESTPLATE.get() && player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModInit.SLIME_HELMET.get()) {
+                i += 2;
+            }
+
+            if (player.getItemBySlot(EquipmentSlot.FEET).getItem() == ModInit.SLIME_BOOTS.get() && player.getItemBySlot(EquipmentSlot.LEGS).getItem() == ModInit.SLIME_LEGGINGS.get()) {
                 i += 2;
             }
 
