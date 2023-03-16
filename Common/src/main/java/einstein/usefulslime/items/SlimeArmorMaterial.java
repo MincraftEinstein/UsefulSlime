@@ -3,21 +3,21 @@ package einstein.usefulslime.items;
 import einstein.usefulslime.UsefulSlime;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class SlimeArmorMaterial implements ArmorMaterial {
 
-    public static final ArmorMaterial instance = new SlimeArmorMaterial();
+    public static final ArmorMaterial INSTANCE = new SlimeArmorMaterial();
 
     @Override
-    public int getDurabilityForSlot(final EquipmentSlot slotIn) {
+    public int getDurabilityForType(ArmorItem.Type type) {
         return -1;
     }
 
     @Override
-    public int getDefenseForSlot(final EquipmentSlot slotIn) {
+    public int getDefenseForType(ArmorItem.Type type) {
         return 0;
     }
 
