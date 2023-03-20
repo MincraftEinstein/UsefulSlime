@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[44,)"
+loaderVersion="[45,)"
 license="Custom license"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
@@ -30,13 +30,13 @@ All other directories and jars are under the MIT license
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[44.0.16,)"
+    versionRange="[45.0.6,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.3, 1.20)"
+    versionRange="[1.19.4, 1.20)"
     ordering="NONE"
     side="BOTH"
