@@ -3,7 +3,7 @@
   "id": "usefulslime",
   "version": "${version}",
   "name": "Useful Slime",
-  "description": "Adds some new uses for slime\n\nLicense:\nThe following directories (both in the jars and on GitHub) are under All Rights Reserved:\nCommon/src/main/resources\nForge/src/main/resources\nFabric/src/main/resources\n\nAll other directories and jars are under the MIT license",
+  "description": "Adds some new uses for slime\n\nLicense:\nThe following files/specified lines/directories (on GitHub/in the project) are under the MIT license:\nCommon/src/main/java/einstein/usefulslime/items/SlimeSlingItem.java\nCommon/src/main/java/einstein/usefulslime/util/BounceHandler.java\nCommon/src/main/java/einstein/usefulslime/UsefulSlime.java (Lines 25 to 66)\n\nThe following files/specified lines/directories (in jars files) are under the MIT license:\neinstein/usefulslime/items/SlimeSlingItem.java\neinstein/usefulslime/util/BounceHandler.java\neinstein/usefulslime/UsefulSlime.java (Lines 25 to 66)\n\nAll other files/lines of code/directories (both on GitHub/in the project/in jars) are under All Rights Reserved",
   "authors": [
     "MincraftEinstein"
   ],
