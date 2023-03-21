@@ -38,25 +38,22 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
         if (level.isClientSide) {
-            setClimbing(horizontalCollision || ((VerticalCollider) this).verticalCollisionAbove());
+            setClimbing(horizontalCollision);
         }
     }
 
     @Override
     public boolean onClimbable() {
-        boolean canHangClimb = getItemBySlot(EquipmentSlot.HEAD).is(ModInit.SLIME_HELMET.get()) && ((VerticalCollider) this).verticalCollisionAbove() && Minecraft.getInstance().options.keyJump.isDown();
-        setNoGravity(canHangClimb);
-        return super.onClimbable() || (hasFullSlimeArmor() && entityData.get(DATA_CLIMBING)) || canHangClimb;
-    }
+        boolean canWallClimb = getItemBySlot(EquipmentSlot.LEGS).is(ModInit.SLIME_LEGGINGS.get())
+                && getItemBySlot(EquipmentSlot.CHEST).is(ModInit.SLIME_CHESTPLATE.get())
+                && entityData.get(DATA_CLIMBING);
 
-    private boolean hasFullSlimeArmor() {
-        int i = 0;
-        for (ItemStack slot : getArmorSlots()) {
-            if (slot.getItem() instanceof SlimeArmor) {
-                i++;
-            }
-        }
-        return i == 4;
+        boolean canHangClimb = getItemBySlot(EquipmentSlot.HEAD).is(ModInit.SLIME_HELMET.get())
+                && ((VerticalCollider) this).verticalCollisionAbove()
+                && Minecraft.getInstance().options.keyJump.isDown();
+
+        setNoGravity(canHangClimb);
+        return super.onClimbable() || canWallClimb || canHangClimb;
     }
 
     private void setClimbing(boolean collidingHorizontally) {
