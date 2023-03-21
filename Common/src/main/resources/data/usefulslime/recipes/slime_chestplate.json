@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s s",
+    "sbs",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:slime_ball"
+    },
+    "b": {
+      "item": "minecraft:slime_block"
+    }
+  },
+  "result": {
+    "item": "usefulslime:slime_chestplate"
+  }
+}
