@@ -3,7 +3,9 @@ package einstein.usefulslime;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -47,6 +49,15 @@ public class UsefulSlime {
                 data.setCanceled(true);
             }
             entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
+
+            for (int i = 0; i < 8; i++) {
+                float random1 = entity.getRandom().nextFloat() * 6.2831855F;
+                float random2 = entity.getRandom().nextFloat() * 0.5F + 0.5F;
+                float xOffset = Mth.sin(random1) * 0.5F * random2;
+                float yOffset = Mth.cos(random1) * 0.5F * random2;
+                entity.level.addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + xOffset, entity.getY(), entity.getZ() + yOffset, 0, 0, 0);
+            }
+
             BounceHandler.addBounceHandler(entity, entity.getDeltaMovement().y);
         }
         else if (!entity.level.isClientSide && entity.isShiftKeyDown()) {

@@ -6,7 +6,7 @@
     ],
     "key": {
         "s": {
-            "tag": "forge:slimeballs"
+            "item": "minecraft:slime_ball"
         },
         "b": {
             "item": "minecraft:slime_block"
