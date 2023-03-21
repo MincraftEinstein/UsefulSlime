@@ -4,7 +4,10 @@ import einstein.usefulslime.blocks.SlipperySlimeBlock;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.items.SlimeSlingItem;
 import einstein.usefulslime.platform.Services;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,6 +27,7 @@ public class ModInit {
     public static final Supplier<Item> SLIME_LEGGINGS = Services.REGISTRY.registerItem("slime_leggings", () -> new SlimeArmor(new Item.Properties(), ArmorItem.Type.LEGGINGS));
     public static final Supplier<Item> SLIME_CHESTPLATE = Services.REGISTRY.registerItem("slime_chestplate", () -> new SlimeArmor(new Item.Properties(), ArmorItem.Type.CHESTPLATE));
     public static final Supplier<Item> SLIME_HELMET = Services.REGISTRY.registerItem("slime_helmet", () -> new SlimeArmor(new Item.Properties(), ArmorItem.Type.HELMET));
+    public static final Supplier<Item> JELLO = Services.REGISTRY.registerItem("jello", () -> new Item(new Item.Properties().stacksTo(16).food(new FoodProperties.Builder().nutrition(4).saturationMod(0.5F).effect(new MobEffectInstance(MobEffects.JUMP, 600, 2), 1).build())));
 
     public static void init() {}
 }

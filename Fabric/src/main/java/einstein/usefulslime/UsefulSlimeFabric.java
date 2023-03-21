@@ -22,5 +22,9 @@ public class UsefulSlimeFabric implements ModInitializer {
             entries.accept(ModInit.SLIME_CHESTPLATE.get());
             entries.accept(ModInit.SLIME_HELMET.get());
         });
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
+            entries.accept(ModInit.JELLO.get());
+        });
     }
 }

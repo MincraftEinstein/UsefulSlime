@@ -65,6 +65,9 @@ public class UsefulSlimeForge {
             event.accept(ModInit.SLIME_CHESTPLATE);
             event.accept(ModInit.SLIME_HELMET);
         }
+        else if (event.getTab() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModInit.JELLO);
+        }
     }
 
     void missingMappings(MissingMappingsEvent event) {
