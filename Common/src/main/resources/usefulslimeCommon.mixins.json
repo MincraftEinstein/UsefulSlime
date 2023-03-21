@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "einstein.usefulslime.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "usefulslime.refmap.json",
+  "mixins": [
+    "ClimbingPlayerMixin",
+    "EntityMixin"
+  ]
+}

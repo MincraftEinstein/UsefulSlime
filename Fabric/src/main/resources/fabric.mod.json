@@ -24,7 +24,8 @@
     ]
   },
   "mixins": [
-    "usefulslime.mixins.json"
+    "usefulslime.mixins.json",
+    "usefulslimeCommon.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14",
