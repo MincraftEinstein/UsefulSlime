@@ -38,7 +38,8 @@ This mod adds a retextured version of the slime sling and slime boots from [Tink
 ---
 
 ### **💬 Translators**
-Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)
+Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)<br>
+French: [Calvineries](https://github.com/Calvineries)
 
 ---
 
