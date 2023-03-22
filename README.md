@@ -19,7 +19,10 @@ and a few other useful/fun slime items
 <li>You may translate this mod into any language (Just make a pull request on github)</li>
 <li>You may make resource/data packs</li>
 <hr>
-<li>You may <b>NOT</b> sell anything under the following directories: "Common/src/main/resources", "Forge/src/main/resources", "Fabric/src/main/resources"</li>
+<li>You may <b>NOT</b> sell anything that is <b>NOT</b> under one of the following files/specified lines/directories:<br>
+"einstein/usefulslime/items/SlimeSlingItem.java",
+"einstein/usefulslime/util/BounceHandler.java",
+"einstein/usefulslime/UsefulSlime.java (Lines 25 to 66)"</li>
 </ul>
 </details>
 <br>
