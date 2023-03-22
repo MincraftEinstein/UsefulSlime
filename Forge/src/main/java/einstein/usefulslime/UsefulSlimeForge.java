@@ -6,8 +6,7 @@ import einstein.usefulslime.util.LivingFallData;
 import einstein.usefulslime.util.PlayerTickData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.TickEvent;
@@ -54,19 +53,23 @@ public class UsefulSlimeForge {
     }
 
     void onBuildContents(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(ModInit.SLIME_SLING);
-            event.accept(ModInit.SLIME_BOOTS);
+        CreativeModeTab tab = event.getTab();
+        var entries = event.getEntries();
+
+        if (tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            entries.putAfter(new ItemStack(Items.SPYGLASS), new ItemStack(ModInit.SLIME_SLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
+        else if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModInit.SLIPPERY_SLIME_BLOCK_ITEM);
         }
-        else if (event.getTab() == CreativeModeTabs.COMBAT) {
-            event.accept(ModInit.SLIME_BOOTS);
-            event.accept(ModInit.SLIME_LEGGINGS);
-            event.accept(ModInit.SLIME_CHESTPLATE);
-            event.accept(ModInit.SLIME_HELMET);
+        else if (tab == CreativeModeTabs.COMBAT) {
+            entries.putAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModInit.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModInit.SLIME_HELMET.get()), new ItemStack(ModInit.SLIME_CHESTPLATE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModInit.SLIME_CHESTPLATE.get()), new ItemStack(ModInit.SLIME_LEGGINGS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModInit.SLIME_LEGGINGS.get()), new ItemStack(ModInit.SLIME_BOOTS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-        else if (event.getTab() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            event.accept(ModInit.JELLO);
+        else if (tab == CreativeModeTabs.FOOD_AND_DRINKS) {
+            entries.putBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModInit.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
