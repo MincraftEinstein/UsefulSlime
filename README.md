@@ -7,6 +7,7 @@
 
 ### **📘 Description**
 This mod adds a retextured version of the slime sling and slime boots from [Tinkers' Construct](https://curseforge.com/minecraft/mc-mods/tinkers-construct)
+and a few other useful/fun slime items
 
 **Credits:** Tinkers' Construct for the original slime sling and slime boots
 
@@ -18,7 +19,7 @@ This mod adds a retextured version of the slime sling and slime boots from [Tink
 <li>You may translate this mod into any language (Just make a pull request on github)</li>
 <li>You may make resource/data packs</li>
 <hr>
-<li>You may <b>NOT</b> sell anything under the following directories "Common/src/main/resources", "Forge/src/main/resources", "Fabric/src/main/resources"</li>
+<li>You may <b>NOT</b> sell anything under the following directories: "Common/src/main/resources", "Forge/src/main/resources", "Fabric/src/main/resources"</li>
 </ul>
 </details>
 <br>
