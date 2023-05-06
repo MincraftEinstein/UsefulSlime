@@ -42,8 +42,11 @@ and a few other useful/fun slime items
 ---
 
 ### **💬 Translators**
-Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)<br>
+Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)
+<br>
 French: [Calvineries](https://github.com/Calvineries)
+<br>
+Swedish: [realslude](https://github.com/realslude)
 
 ---
 
