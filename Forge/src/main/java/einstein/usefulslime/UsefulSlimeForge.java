@@ -1,10 +1,10 @@
 package einstein.usefulslime;
 
+import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.platform.ForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import einstein.usefulslime.util.PlayerTickData;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -57,26 +57,26 @@ public class UsefulSlimeForge {
         var entries = event.getEntries();
 
         if (tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            entries.putAfter(new ItemStack(Items.SPYGLASS), new ItemStack(ModInit.SLIME_SLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(Items.SPYGLASS), new ItemStack(ModItems.SLIME_SLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         else if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(ModInit.SLIPPERY_SLIME_BLOCK_ITEM);
+            event.accept(ModItems.SLIPPERY_SLIME_BLOCK_ITEM);
         }
         else if (tab == CreativeModeTabs.COMBAT) {
-            entries.putAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModInit.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModInit.SLIME_HELMET.get()), new ItemStack(ModInit.SLIME_CHESTPLATE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModInit.SLIME_CHESTPLATE.get()), new ItemStack(ModInit.SLIME_LEGGINGS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModInit.SLIME_LEGGINGS.get()), new ItemStack(ModInit.SLIME_BOOTS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModItems.SLIME_HELMET.get()), new ItemStack(ModItems.SLIME_CHESTPLATE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModItems.SLIME_CHESTPLATE.get()), new ItemStack(ModItems.SLIME_LEGGINGS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putAfter(new ItemStack(ModItems.SLIME_LEGGINGS.get()), new ItemStack(ModItems.SLIME_BOOTS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         else if (tab == CreativeModeTabs.FOOD_AND_DRINKS) {
-            entries.putBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModInit.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            entries.putBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModItems.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
     void missingMappings(MissingMappingsEvent event) {
         for (MissingMappingsEvent.Mapping<Item> mapping : event.getMappings(ForgeRegistries.ITEMS.getRegistryKey(), UsefulSlime.MOD_ID)) {
             if (mapping.getKey().getPath().equals("slimesling")) {
-                mapping.remap(ModInit.SLIME_SLING.get());
+                mapping.remap(ModItems.SLIME_SLING.get());
             }
         }
     }

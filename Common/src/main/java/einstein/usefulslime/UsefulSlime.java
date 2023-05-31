@@ -1,5 +1,7 @@
 package einstein.usefulslime;
 
+import einstein.usefulslime.init.ModBlocks;
+import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
@@ -19,7 +21,8 @@ public class UsefulSlime {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
     public static void init() {
-        ModInit.init();
+        ModBlocks.init();
+        ModItems.init();
     }
 
     public static void onFall(LivingFallData data) {

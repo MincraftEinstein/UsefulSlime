@@ -1,7 +1,6 @@
 package einstein.usefulslime.mixin;
 
-import einstein.usefulslime.ModInit;
-import einstein.usefulslime.items.SlimeArmor;
+import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.util.VerticalCollider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -44,11 +43,11 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
 
     @Override
     public boolean onClimbable() {
-        boolean canWallClimb = getItemBySlot(EquipmentSlot.LEGS).is(ModInit.SLIME_LEGGINGS.get())
-                && getItemBySlot(EquipmentSlot.CHEST).is(ModInit.SLIME_CHESTPLATE.get())
+        boolean canWallClimb = getItemBySlot(EquipmentSlot.LEGS).is(ModItems.SLIME_LEGGINGS.get())
+                && getItemBySlot(EquipmentSlot.CHEST).is(ModItems.SLIME_CHESTPLATE.get())
                 && entityData.get(DATA_CLIMBING);
 
-        boolean canHangClimb = getItemBySlot(EquipmentSlot.HEAD).is(ModInit.SLIME_HELMET.get())
+        boolean canHangClimb = getItemBySlot(EquipmentSlot.HEAD).is(ModItems.SLIME_HELMET.get())
                 && ((VerticalCollider) this).verticalCollisionAbove()
                 && Minecraft.getInstance().options.keyJump.isDown();
 
