@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    private static final ThreadLocal<LivingFallData> currentFallData = new ThreadLocal<>();
+    private static final ThreadLocal<LivingFallData> CURRENT_FALL_DATA = new ThreadLocal<>();
 
     @Inject(method = "causeFallDamage(FFLnet/minecraft/world/damagesource/DamageSource;)Z", at = @At("HEAD"), cancellable = true)
     private void causeFallDamage(float distance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> callbackInfo) {
@@ -22,12 +22,12 @@ public abstract class LivingEntityMixin {
         if (data.isCanceled()) {
             callbackInfo.setReturnValue(false);
         }
-        currentFallData.set(data);
+        CURRENT_FALL_DATA.set(data);
     }
 
     @ModifyVariable(method = "causeFallDamage", at = @At(value = "LOAD"), ordinal = 0, argsOnly = true)
     private float modifyFallDistance(float distance) {
-        LivingFallData data = currentFallData.get();
+        LivingFallData data = CURRENT_FALL_DATA.get();
         if (data != null) {
             distance = data.getDistance();
         }
@@ -36,7 +36,7 @@ public abstract class LivingEntityMixin {
 
     @ModifyVariable(method = "causeFallDamage", at = @At(value = "LOAD"), ordinal = 1, argsOnly = true)
     private float modifyFallDamageMultiplier(float damageMultiplyer) {
-        LivingFallData data = currentFallData.get();
+        LivingFallData data = CURRENT_FALL_DATA.get();
         if (data != null) {
             damageMultiplyer = data.getDamageMultiplier();
         }
