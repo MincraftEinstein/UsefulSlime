@@ -41,7 +41,7 @@ public class BounceHandler {
                 data.getPlayer().setDeltaMovement(vec3.x, bounce, vec3.z);
                 bounceTick = 0;
             }
-            if (!entity.isOnGround() && entity.tickCount != bounceTick && (lastMoveX != entity.getDeltaMovement().x || lastMoveZ != entity.getDeltaMovement().z)) {
+            if (!entity.onGround() && entity.tickCount != bounceTick && (lastMoveX != entity.getDeltaMovement().x || lastMoveZ != entity.getDeltaMovement().z)) {
                 final double d = 0.935D;
                 final Vec3 vec32 = entity.getDeltaMovement();
                 data.getPlayer().setDeltaMovement(vec32.x / d, vec32.y, vec32.z / d);
@@ -49,7 +49,7 @@ public class BounceHandler {
                 lastMoveX = entity.getDeltaMovement().x;
                 lastMoveZ = entity.getDeltaMovement().z;
             }
-            if (wasInAir && entity.isOnGround()) {
+            if (wasInAir && entity.onGround()) {
                 if (timer == 0) {
                     timer = entity.tickCount;
                 } else if (entity.tickCount - timer > 5) {

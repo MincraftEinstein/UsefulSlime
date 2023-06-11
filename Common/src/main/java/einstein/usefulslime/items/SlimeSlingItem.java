@@ -41,7 +41,7 @@ public class SlimeSlingItem extends Item {
             return;
         }
 
-        if (!player.isOnGround()) {
+        if (!player.onGround()) {
             return;
         }
 

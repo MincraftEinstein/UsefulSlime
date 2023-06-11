@@ -41,7 +41,7 @@ public class UsefulSlime {
         if (!entity.isShiftKeyDown() && data.getDistance() > 2) {
             data.setDamageMultiplier(0);
             entity.fallDistance = 0;
-            if (entity.level.isClientSide) {
+            if (entity.level().isClientSide) {
                 entity.setDeltaMovement(entity.getDeltaMovement().x, entity.getDeltaMovement().y * -0.9F, entity.getDeltaMovement().z);
                 entity.hasImpulse = true;
                 entity.setOnGround(false);
@@ -58,12 +58,12 @@ public class UsefulSlime {
                 float random2 = entity.getRandom().nextFloat() * 0.5F + 0.5F;
                 float xOffset = Mth.sin(random1) * 0.5F * random2;
                 float yOffset = Mth.cos(random1) * 0.5F * random2;
-                entity.level.addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + xOffset, entity.getY(), entity.getZ() + yOffset, 0, 0, 0);
+                entity.level().addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + xOffset, entity.getY(), entity.getZ() + yOffset, 0, 0, 0);
             }
 
             BounceHandler.addBounceHandler(entity, entity.getDeltaMovement().y);
         }
-        else if (!entity.level.isClientSide && entity.isShiftKeyDown()) {
+        else if (!entity.level().isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
         }
     }

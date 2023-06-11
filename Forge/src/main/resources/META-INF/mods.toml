@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[45,)"
+loaderVersion="[46,)"
 license="Custom license"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
@@ -35,13 +35,13 @@ All other files/lines of code/directories (both on GitHub/in the project/in jars
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[45.0.6,)"
+    versionRange="[46.0.14,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.4, 1.20)"
+    versionRange="[1.20, 1.21)"
     ordering="NONE"
     side="BOTH"

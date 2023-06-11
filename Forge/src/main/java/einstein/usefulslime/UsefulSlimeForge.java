@@ -5,10 +5,11 @@ import einstein.usefulslime.platform.ForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import einstein.usefulslime.util.PlayerTickData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -52,8 +53,8 @@ public class UsefulSlimeForge {
         }
     }
 
-    void onBuildContents(CreativeModeTabEvent.BuildContents event) {
-        CreativeModeTab tab = event.getTab();
+    void onBuildContents(BuildCreativeModeTabContentsEvent event) {
+        ResourceKey<CreativeModeTab> tab = event.getTabKey();
         var entries = event.getEntries();
 
         if (tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {

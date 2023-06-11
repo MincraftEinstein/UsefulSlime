@@ -36,7 +36,7 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
-        if (level.isClientSide) {
+        if (level().isClientSide) {
             setClimbing(horizontalCollision);
         }
     }
