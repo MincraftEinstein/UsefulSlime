@@ -13,6 +13,6 @@ public class SlipperySlimeBlock extends HalfTransparentBlock {
 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        entity.causeFallDamage(fallDistance, 0, null);
+        entity.causeFallDamage(fallDistance, 0, entity.damageSources().fall());
     }
 }
