@@ -48,8 +48,7 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
                 && entityData.get(DATA_CLIMBING);
 
         boolean canHangClimb = getItemBySlot(EquipmentSlot.HEAD).is(ModItems.SLIME_HELMET.get())
-                && ((VerticalCollider) this).verticalCollisionAbove()
-                && Minecraft.getInstance().options.keyJump.isDown();
+                && ((VerticalCollider) this).verticalCollisionAbove() && jumping;
 
         setNoGravity(canHangClimb);
         return super.onClimbable() || canWallClimb || canHangClimb;
