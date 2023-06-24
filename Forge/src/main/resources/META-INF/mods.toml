@@ -9,7 +9,7 @@ issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 	displayName="Useful Slime"
 	#updateJSONURL="https://change.me.example.invalid/updates.json"
 	displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime"
-	logoFile="logo.png"
+	logoFile="pack.png"
 	credits="The people who suggested the mod to me and Tinkers Construct for the orignal mod"
 	authors="MincraftEinstein"
 	description='''
@@ -30,7 +30,7 @@ All other files/lines of code/directories (both on GitHub/in the project/in jars
 '''
 
 [modproperties.usefulslime]
-    catalogueItemIcon="usefulslime:slimesling"
+    catalogueImageIcon="pack.png"
 
 [[dependencies.usefulslime]]
     modId="forge"

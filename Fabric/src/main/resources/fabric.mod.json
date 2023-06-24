@@ -35,5 +35,10 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "custom": {
+    "catalogue": {
+      "banner": "pack.png"
+    }
   }
 }
