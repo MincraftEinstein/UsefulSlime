@@ -49,6 +49,8 @@ Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)
 French: [Calvineries](https://github.com/Calvineries)
 <br>
 Swedish: [realslude](https://github.com/realslude)
+<br>
+Ukrainian: [Un roman](https://github.com/unroman)
 
 ---
 
