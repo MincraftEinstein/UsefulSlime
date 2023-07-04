@@ -51,6 +51,8 @@ French: [Calvineries](https://github.com/Calvineries)
 Swedish: [realslude](https://github.com/realslude)
 <br>
 Ukrainian: [Un roman](https://github.com/unroman)
+<br>
+Turkish: [Hexasan](https://github.com/Hexasan)
 
 ---
 
