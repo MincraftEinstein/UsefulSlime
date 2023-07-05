@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "usefulslime:slime_helmet",
+    "usefulslime:slime_chestplate",
+    "usefulslime:slime_leggings",
+    "usefulslime:slime_boots"
+  ]
+}
