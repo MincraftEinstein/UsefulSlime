@@ -12,6 +12,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -29,6 +30,7 @@ public class UsefulSlimeForge {
         ForgeRegistryHelper.BLOCKS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::onFall);
+        MinecraftForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         MinecraftForge.EVENT_BUS.addListener(this::missingMappings);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerTick);
     }
@@ -37,6 +39,16 @@ public class UsefulSlimeForge {
         LivingFallData data = new LivingFallData(event.getEntity(), event.getDistance(), event.getDamageMultiplier());
         UsefulSlime.onFall(data);
         event.setDamageMultiplier(data.getDamageMultiplier());
+        event.setDistance(data.getDistance());
+
+        if (data.isCanceled()) {
+            event.setCanceled(true);
+        }
+    }
+
+    void onPlayerFlyFall(PlayerFlyableFallEvent event) {
+        LivingFallData data = new LivingFallData(event.getEntity(), event.getDistance(), 0);
+        UsefulSlime.onFall(data);
         event.setDistance(data.getDistance());
 
         if (data.isCanceled()) {
