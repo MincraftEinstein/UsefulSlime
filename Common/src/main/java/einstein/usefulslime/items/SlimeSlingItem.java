@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -37,7 +38,7 @@ public class SlimeSlingItem extends Item {
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
-        if (!(entity instanceof final Player player)) {
+        if (!(entity instanceof Player player)) {
             return;
         }
 
@@ -45,7 +46,7 @@ public class SlimeSlingItem extends Item {
             return;
         }
 
-        final int timeUsed = this.getUseDuration(stack) - timeLeft;
+        int timeUsed = getUseDuration(stack) - timeLeft;
         float i = timeUsed / 20;
         i = (i * i + i * 2) / 3;
         i *= 4;
@@ -55,7 +56,7 @@ public class SlimeSlingItem extends Item {
         }
 
         i *= 1;
-        final HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
+        HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
 
         if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
             final Vec3 vec3 = player.getLookAngle().normalize();
@@ -71,6 +72,8 @@ public class SlimeSlingItem extends Item {
             player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
             player.playSound(SoundEvents.SLIME_JUMP_SMALL, 1, 1);
             BounceHandler.addBounceHandler(player);
+            EquipmentSlot slot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+            stack.hurtAndBreak(1, player, it -> it.broadcastBreakEvent(slot));
         }
     }
 
@@ -82,5 +85,10 @@ public class SlimeSlingItem extends Item {
     @Override
     public int getUseDuration(final ItemStack stack) {
         return 72000;
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack stack, ItemStack ingredientStack) {
+        return ingredientStack.is(Items.SLIME_BALL);
     }
 }
