@@ -1,12 +1,13 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
-    id 'maven-publish'
+    id 'java'
     id 'idea'
+    id 'maven-publish'
+    id 'fabric-loom'
 }
 
-version = "${mod_v}"
-group = "${mod_group}"
-archivesBaseName = "${mod_name}-fabric-${mc_v}"
+base {
+    archivesName = "${mod_name}-fabric-${minecraft_version}"
+}
 
 repositories {
     maven {
@@ -15,19 +16,21 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${mc_v}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
 
-    modImplementation "net.fabricmc:fabric-loader:${fabric_v}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_v}+${mc_v}"
+    modImplementation "net.fabricmc:fabric-loader:${fabric_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}+${minecraft_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    implementation project(":Common")
+    implementation project(":common")
 
-    modImplementation("com.terraformersmc:modmenu:${modmenu_v}")
+    modImplementation("com.terraformersmc:modmenu:${modmenu_version}")
 }
 
 loom {
-    mixin.defaultRefmapName = "${mod_id}.refmap.json"
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
 
     runs {
         client {
@@ -48,31 +51,28 @@ loom {
 sourceSets.main.resources { srcDirs += ["src/main/generated"] }
 
 processResources {
-    from project(":Common").sourceSets.main.resources
+    from project(":common").sourceSets.main.resources
 
     exclude('.cache/')
 
-    inputs.property "version", "${mod_v}"
+    inputs.property("version", version)
 
     filesMatching("fabric.mod.json") {
-        expand "version": "${mod_v}"
+        expand("version": version)
     }
 }
 
 tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main.allSource)
+    source(project(":common").sourceSets.main.allSource)
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
+            artifactId base.archivesName.get()
             from components.java
         }
     }
-
     repositories {
         maven {
             url "file://" + System.getenv("local_maven")

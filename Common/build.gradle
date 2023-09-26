@@ -1,27 +1,16 @@
 plugins {
+    id 'idea'
     id 'java'
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
     id 'maven-publish'
+    id 'org.spongepowered.gradle.vanilla'
 }
 
-version = "${mod_v}"
-group = "${mod_group}"
-archivesBaseName = "${mod_name}-common-${mc_v}"
+base {
+    archivesName = "${mod_name}-common-${minecraft_version}"
+}
 
 minecraft {
-    version("${mc_v}")
-
-    runs {
-        if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
-            server(project.hasProperty('common_server_run_name') ? project.findProperty('common_server_run_name') : 'vanilla_server') {
-                workingDirectory(this.file("run"))
-            }
-
-            client(project.hasProperty('common_client_run_name') ? project.findProperty('common_client_run_name') : 'vanilla_client') {
-                workingDirectory(this.file("run"))
-            }
-        }
-    }
+    version("${minecraft_version}")
 }
 
 dependencies {
