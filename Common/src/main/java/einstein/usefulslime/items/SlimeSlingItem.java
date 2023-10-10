@@ -47,7 +47,7 @@ public class SlimeSlingItem extends Item {
         }
 
         int timeUsed = getUseDuration(stack) - timeLeft;
-        float i = timeUsed / 20;
+        float i = timeUsed / 20F;
         i = (i * i + i * 2) / 3;
         i *= 4;
 
@@ -58,22 +58,27 @@ public class SlimeSlingItem extends Item {
         i *= 1;
         HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
 
-        if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
-            final Vec3 vec3 = player.getLookAngle().normalize();
+        if (hitResult != null) {
+            if (hitResult.getType() == HitResult.Type.BLOCK) {
+                final Vec3 vec3 = player.getLookAngle().normalize();
 
-            if (player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.SLIME_CHESTPLATE.get() && player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SLIME_HELMET.get()) {
-                i += 2;
+                if (player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.SLIME_CHESTPLATE.get() && player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SLIME_HELMET.get()) {
+                    i += 2;
+                }
+
+                if (player.getItemBySlot(EquipmentSlot.FEET).getItem() == ModItems.SLIME_BOOTS.get() && player.getItemBySlot(EquipmentSlot.LEGS).getItem() == ModItems.SLIME_LEGGINGS.get()) {
+                    i += 2;
+                }
+
+                player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
+                BounceHandler.addBounceHandler(player);
+                EquipmentSlot slot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+                stack.hurtAndBreak(1, player, it -> it.broadcastBreakEvent(slot));
             }
 
-            if (player.getItemBySlot(EquipmentSlot.FEET).getItem() == ModItems.SLIME_BOOTS.get() && player.getItemBySlot(EquipmentSlot.LEGS).getItem() == ModItems.SLIME_LEGGINGS.get()) {
-                i += 2;
+            if (i > 1) {
+                player.playSound(SoundEvents.SLIME_JUMP_SMALL, 1, 1);
             }
-
-            player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
-            player.playSound(SoundEvents.SLIME_JUMP_SMALL, 1, 1);
-            BounceHandler.addBounceHandler(player);
-            EquipmentSlot slot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
-            stack.hurtAndBreak(1, player, it -> it.broadcastBreakEvent(slot));
         }
     }
 
