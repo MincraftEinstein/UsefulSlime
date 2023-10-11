@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({"depercation"})
 public class SlimeSlingItem extends Item {
 
     public SlimeSlingItem(Properties properties) {
@@ -29,11 +29,10 @@ public class SlimeSlingItem extends Item {
     }
 
     @Override
-    @Nonnull
-    public InteractionResultHolder use(Level level, @NotNull Player player, InteractionHand hand) {
-        final ItemStack itemStackIn = player.getItemInHand(hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
         player.startUsingItem(hand);
-        return new InteractionResultHolder(InteractionResult.SUCCESS, itemStackIn);
+        return InteractionResultHolder.success(stack);
     }
 
     @Override
@@ -60,13 +59,13 @@ public class SlimeSlingItem extends Item {
 
         if (hitResult != null) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
-                final Vec3 vec3 = player.getLookAngle().normalize();
+                Vec3 vec3 = player.getLookAngle().normalize();
 
-                if (player.getItemBySlot(EquipmentSlot.CHEST).getItem() == ModItems.SLIME_CHESTPLATE.get() && player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SLIME_HELMET.get()) {
+                if (player.getItemBySlot(EquipmentSlot.CHEST).is(ModItems.SLIME_CHESTPLATE.get()) && player.getItemBySlot(EquipmentSlot.HEAD).is(ModItems.SLIME_HELMET.get())) {
                     i += 2;
                 }
 
-                if (player.getItemBySlot(EquipmentSlot.FEET).getItem() == ModItems.SLIME_BOOTS.get() && player.getItemBySlot(EquipmentSlot.LEGS).getItem() == ModItems.SLIME_LEGGINGS.get()) {
+                if (player.getItemBySlot(EquipmentSlot.FEET).is(ModItems.SLIME_BOOTS.get()) && player.getItemBySlot(EquipmentSlot.LEGS).is(ModItems.SLIME_LEGGINGS.get())) {
                     i += 2;
                 }
 
@@ -83,12 +82,12 @@ public class SlimeSlingItem extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(final ItemStack stack) {
+    public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
     }
 
     @Override
-    public int getUseDuration(final ItemStack stack) {
+    public int getUseDuration(ItemStack stack) {
         return 72000;
     }
 

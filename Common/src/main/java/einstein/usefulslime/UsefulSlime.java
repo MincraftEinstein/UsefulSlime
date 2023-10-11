@@ -26,31 +26,34 @@ public class UsefulSlime {
     }
 
     public static void onFall(LivingFallData data) {
-        final LivingEntity entity = data.getEntity();
+        LivingEntity entity = data.getEntity();
 
         if (entity == null) {
             return;
         }
 
-        final ItemStack feetSlot = entity.getItemBySlot(EquipmentSlot.FEET);
+        ItemStack footStack = entity.getItemBySlot(EquipmentSlot.FEET);
 
-        if (!(feetSlot.getItem() instanceof SlimeArmor)) {
+        if (!(footStack.getItem() instanceof SlimeArmor)) {
             return;
         }
 
         if (!entity.isShiftKeyDown() && data.getDistance() > 2) {
             data.setDamageMultiplier(0);
             entity.fallDistance = 0;
+
             if (entity.level().isClientSide) {
+                double d = 0.9500000000000001D;
+
                 entity.setDeltaMovement(entity.getDeltaMovement().x, entity.getDeltaMovement().y * -0.9F, entity.getDeltaMovement().z);
                 entity.hasImpulse = true;
                 entity.setOnGround(false);
-                final double d = 0.9500000000000001D;
                 entity.setDeltaMovement(entity.getDeltaMovement().x / d, entity.getDeltaMovement().y, entity.getDeltaMovement().z / d);
             }
             else {
                 data.setCanceled(true);
             }
+
             entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
 
             for (int i = 0; i < 8; i++) {

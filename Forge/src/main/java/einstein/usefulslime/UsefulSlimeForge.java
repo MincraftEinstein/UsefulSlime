@@ -4,7 +4,6 @@ import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.platform.ForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
-import einstein.usefulslime.util.PlayerTickData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -60,7 +59,7 @@ public class UsefulSlimeForge {
         if (event.phase == TickEvent.Phase.END) {
             Player player = event.player;
             if (BounceHandler.BOUNCING_ENTITIES.containsKey(player)) {
-                BounceHandler.BOUNCING_ENTITIES.get(player).onPlayerTick(new PlayerTickData(player));
+                BounceHandler.BOUNCING_ENTITIES.get(player).onPlayerTick(player);
             }
         }
     }
