@@ -73,7 +73,7 @@ public class BounceHandler {
     }
 
     public static void addBounceHandler(LivingEntity entity, double bounce) {
-        if (!(entity instanceof Player) || Services.PLATFORM.isFakePlayer(entity)) {
+        if (!(entity instanceof Player)) {
             return;
         }
 
