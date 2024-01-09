@@ -15,18 +15,7 @@ issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 	description='''
 Adds some new uses for slime
 
-License:
-The following files/specified lines/directories (on GitHub/in the project) are under the MIT license:
-Common/src/main/java/einstein/usefulslime/items/SlimeSlingItem.java
-Common/src/main/java/einstein/usefulslime/util/BounceHandler.java
-Common/src/main/java/einstein/usefulslime/UsefulSlime.java (Lines 28 to 69)
-
-The following files/specified lines/directories (in jars files) are under the MIT license:
-einstein/usefulslime/items/SlimeSlingItem.java
-einstein/usefulslime/util/BounceHandler.java
-einstein/usefulslime/UsefulSlime.java (Lines 28 to 69)
-
-All other files/lines of code/directories (On GitHub/in the project/in jars) are under All Rights Reserved
+License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
 '''
 
 [modproperties.usefulslime]
