@@ -42,7 +42,11 @@
     },
     "modmenu": {
       "links": {
-        "modmenu.discord": "https://discord.gg/gSsaFAvrBM"
+        "modmenu.usefulslime.license": "https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md",
+        "modmenu.modrinth": "https://modrinth.com/mod/useful-slime",
+        "modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/useful-slime",
+        "modmenu.discord": "https://discord.gg/gSsaFAvrBM",
+        "modmenu.kofi": "https://ko-fi.com/mincrafteinstein"
       }
     }
   }

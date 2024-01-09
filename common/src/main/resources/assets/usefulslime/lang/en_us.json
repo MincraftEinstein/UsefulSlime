@@ -8,5 +8,6 @@
   "item.usefulslime.jello": "Jello",
   "config.usefulslime.hang_climbing_damages_slime_helmet": "Hang Climbing Damages Slime Helmet",
   "config.usefulslime.wall_climbing_damages_slime_chestplate_and_leggings": "Wall Climbing Damages Slime Chestplate And Leggings",
-  "config.usefulslime.bouncing_damages_slime_boots": "Bouncing Damages Slime Boots"
+  "config.usefulslime.bouncing_damages_slime_boots": "Bouncing Damages Slime Boots",
+  "modmenu.usefulslime.license": "License"
 }
