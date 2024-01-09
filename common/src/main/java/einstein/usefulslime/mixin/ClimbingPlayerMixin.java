@@ -3,8 +3,8 @@ package einstein.usefulslime.mixin;
 import commonnetwork.api.Dispatcher;
 import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
-import einstein.usefulslime.networking.HangClimbPacket;
-import einstein.usefulslime.networking.WallClimbPacket;
+import einstein.usefulslime.networking.serverbound.ServerBoundHangClimbPacket;
+import einstein.usefulslime.networking.serverbound.ServerBoundWallClimbPacket;
 import einstein.usefulslime.util.ClimbingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -78,11 +78,11 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
                     && horizontalCollision;
 
             usefulSlime$climbingEntity.usefulSlime$setHangClimbing(canHangClimb);
-            Dispatcher.sendToServer(new HangClimbPacket(canHangClimb));
+            Dispatcher.sendToServer(new ServerBoundHangClimbPacket(canHangClimb));
             setNoGravity(usefulSlime$climbingEntity.usefulSlime$canHangClimb());
 
             usefulSlime$climbingEntity.usefulSlime$setWallClimbing(canWallClimb);
-            Dispatcher.sendToServer(new WallClimbPacket(canWallClimb));
+            Dispatcher.sendToServer(new ServerBoundWallClimbPacket(canWallClimb));
         }
         return super.onClimbable() || usefulSlime$climbingEntity.usefulSlime$canWallClimb() || usefulSlime$climbingEntity.usefulSlime$canHangClimb();
     }

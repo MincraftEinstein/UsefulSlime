@@ -6,7 +6,7 @@ import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.init.ModPackets;
 import einstein.usefulslime.items.SlimeArmor;
-import einstein.usefulslime.networking.DamageSlimeBootsPacket;
+import einstein.usefulslime.networking.serverbound.ServerBoundDamageSlimeBootsPacket;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.core.particles.ParticleTypes;
@@ -69,7 +69,7 @@ public class UsefulSlime {
             entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
 
             if (ModCommonConfigs.INSTANCE.bouncingDamagesSlimeBoots.get()) {
-                Dispatcher.sendToServer(new DamageSlimeBootsPacket(Math.round(distance / 10)));
+                Dispatcher.sendToServer(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)));
             }
 
             for (int i = 0; i < 8; i++) {
