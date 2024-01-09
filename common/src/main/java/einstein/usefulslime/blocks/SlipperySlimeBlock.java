@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SlipperySlimeBlock extends HalfTransparentBlock {
+
     public SlipperySlimeBlock(Properties properties) {
         super(properties);
     }

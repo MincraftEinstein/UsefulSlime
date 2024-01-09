@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
 
-    public static final Supplier<Block> SLIPPERY_SLIME_BLOCK = Services.REGISTRY.registerBlock("slippery_slime_block", () -> new SlipperySlimeBlock(Block.Properties.of().mapColor(MapColor.GRASS).friction(1.5F).noOcclusion().sound(SoundType.SLIME_BLOCK)));
+    public static final Supplier<Block> SLIPPERY_SLIME_BLOCK = register("slippery_slime_block", () -> new SlipperySlimeBlock(Block.Properties.of().mapColor(MapColor.GRASS).friction(1.5F).noOcclusion().sound(SoundType.SLIME_BLOCK)));
 
     public static void init() {
     }
