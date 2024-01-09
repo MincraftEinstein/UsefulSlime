@@ -1,10 +1,13 @@
 package einstein.usefulslime;
 
+import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
+import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.fml.config.ModConfig;
 
 public class UsefulSlimeFabric implements ModInitializer {
     
@@ -27,5 +30,7 @@ public class UsefulSlimeFabric implements ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
             entries.addBefore(Items.MUSHROOM_STEW, ModItems.JELLO.get());
         });
+
+        ForgeConfigRegistry.INSTANCE.register(UsefulSlime.MOD_ID, ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
     }
 }

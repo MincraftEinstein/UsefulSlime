@@ -1,5 +1,6 @@
 package einstein.usefulslime;
 
+import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.platform.ForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
@@ -13,7 +14,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.MissingMappingsEvent;
@@ -25,6 +29,7 @@ public class UsefulSlimeForge {
         UsefulSlime.init();
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::onBuildContents);
+        modEventBus.addListener(this::clientSetup);
         ForgeRegistryHelper.ITEMS.register(modEventBus);
         ForgeRegistryHelper.BLOCKS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
@@ -32,6 +37,11 @@ public class UsefulSlimeForge {
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         MinecraftForge.EVENT_BUS.addListener(this::missingMappings);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerTick);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
+    }
+
+    void clientSetup(FMLClientSetupEvent event) {
+        UsefulSlime.clientSetup();
     }
 
     void onFall(LivingFallEvent event) {

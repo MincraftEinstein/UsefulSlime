@@ -2,10 +2,12 @@ package einstein.usefulslime;
 
 import einstein.usefulslime.init.ModBlocks;
 import einstein.usefulslime.init.ModItems;
+import einstein.usefulslime.init.ModPackets;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,6 +25,11 @@ public class UsefulSlime {
     public static void init() {
         ModBlocks.init();
         ModItems.init();
+        ModPackets.init();
+    }
+
+    public static void clientSetup() {
+        ModPackets.init();
     }
 
     public static void onFall(LivingFallData data) {
@@ -69,5 +76,13 @@ public class UsefulSlime {
         else if (!entity.level().isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
         }
+    }
+
+    public static void damageEquipment(LivingEntity entity, EquipmentSlot slot) {
+        entity.getItemBySlot(slot).hurtAndBreak(1, entity, broadcaster -> broadcaster.broadcastBreakEvent(slot));
+    }
+
+    public static ResourceLocation loc(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }

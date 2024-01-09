@@ -9,6 +9,7 @@ public class UsefulSlimeClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        UsefulSlime.clientSetup();
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SLIPPERY_SLIME_BLOCK.get(), RenderType.translucent());
     }
 }
