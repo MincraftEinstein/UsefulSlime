@@ -59,10 +59,6 @@ public class UsefulSlimeForge {
         LivingFallData data = new LivingFallData(event.getEntity(), event.getDistance(), 0);
         UsefulSlime.onFall(data);
         event.setDistance(data.getDistance());
-
-        if (data.isCanceled()) {
-            event.setCanceled(true);
-        }
     }
 
     void onPlayerTick(TickEvent.PlayerTickEvent event) {
