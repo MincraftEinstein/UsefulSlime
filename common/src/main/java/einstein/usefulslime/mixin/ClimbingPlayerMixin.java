@@ -46,7 +46,7 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
             if (usefulSlime$climbingEntity.usefulSlime$canWallClimb() && ModCommonConfigs.INSTANCE.wallClimbingDamagesSlimeChestplateAndLeggings.get()) {
                 if (distanceY > 0) {
                     usefulSlime$distanceWallClimbed++;
-                    if (usefulSlime$distanceWallClimbed >= 30) {
+                    if (usefulSlime$distanceWallClimbed >= 100) {
                         usefulSlime$distanceWallClimbed = 0;
                         damageEquipment(this, EquipmentSlot.CHEST);
                         damageEquipment(this, EquipmentSlot.LEGS);
@@ -57,7 +57,7 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
             if (usefulSlime$climbingEntity.usefulSlime$canHangClimb() && ModCommonConfigs.INSTANCE.hangClimbingDamagesSlimeHelmet.get()) {
                 if (Math.sqrt(distanceX * distanceX + distanceZ * distanceZ) > 0) {
                     usefulSlime$distanceHangClimbed++;
-                    if (usefulSlime$distanceHangClimbed >= 100) {
+                    if (usefulSlime$distanceHangClimbed >= 50) {
                         usefulSlime$distanceHangClimbed = 0;
                         damageEquipment(this, EquipmentSlot.HEAD);
                     }
