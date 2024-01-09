@@ -1,9 +1,12 @@
 package einstein.usefulslime;
 
+import commonnetwork.api.Dispatcher;
 import einstein.usefulslime.init.ModBlocks;
+import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.init.ModPackets;
 import einstein.usefulslime.items.SlimeArmor;
+import einstein.usefulslime.networking.DamageSlimeBootsPacket;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,7 +48,9 @@ public class UsefulSlime {
             return;
         }
 
-        if (!entity.isShiftKeyDown() && data.getDistance() > 2) {
+        float distance = data.getDistance();
+
+        if (!entity.isShiftKeyDown() && distance > 2) {
             data.setDamageMultiplier(0);
             entity.fallDistance = 0;
 
@@ -63,6 +68,10 @@ public class UsefulSlime {
 
             entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
 
+            if (ModCommonConfigs.INSTANCE.bouncingDamagesSlimeBoots.get()) {
+                Dispatcher.sendToServer(new DamageSlimeBootsPacket(Math.round(distance / 10)));
+            }
+
             for (int i = 0; i < 8; i++) {
                 float random1 = entity.getRandom().nextFloat() * 6.2831855F;
                 float random2 = entity.getRandom().nextFloat() * 0.5F + 0.5F;
@@ -79,7 +88,11 @@ public class UsefulSlime {
     }
 
     public static void damageEquipment(LivingEntity entity, EquipmentSlot slot) {
-        entity.getItemBySlot(slot).hurtAndBreak(1, entity, broadcaster -> broadcaster.broadcastBreakEvent(slot));
+        damageEquipment(entity, slot, 1);
+    }
+
+    public static void damageEquipment(LivingEntity entity, EquipmentSlot slot, int damage) {
+        entity.getItemBySlot(slot).hurtAndBreak(damage, entity, broadcaster -> broadcaster.broadcastBreakEvent(slot));
     }
 
     public static ResourceLocation loc(String path) {
