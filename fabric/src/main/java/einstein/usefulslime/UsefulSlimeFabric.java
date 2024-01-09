@@ -1,16 +1,20 @@
 package einstein.usefulslime;
 
+import einstein.usefulslime.init.ModBlocks;
 import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.config.ModConfig;
 
-public class UsefulSlimeFabric implements ModInitializer {
-    
+public class UsefulSlimeFabric implements ModInitializer, ClientModInitializer {
+
     @Override
     public void onInitialize() {
         UsefulSlime.init();
@@ -32,5 +36,11 @@ public class UsefulSlimeFabric implements ModInitializer {
         });
 
         ForgeConfigRegistry.INSTANCE.register(UsefulSlime.MOD_ID, ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
+    }
+
+    @Override
+    public void onInitializeClient() {
+        UsefulSlime.clientSetup();
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SLIPPERY_SLIME_BLOCK.get(), RenderType.translucent());
     }
 }

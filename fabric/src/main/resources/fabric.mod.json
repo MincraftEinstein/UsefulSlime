@@ -20,7 +20,7 @@
       "einstein.usefulslime.UsefulSlimeFabric"
     ],
     "client": [
-      "einstein.usefulslime.UsefulSlimeClient"
+      "einstein.usefulslime.UsefulSlimeFabric"
     ]
   },
   "mixins": [
