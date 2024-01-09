@@ -16,6 +16,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,40 +50,41 @@ public class UsefulSlime {
         }
 
         float distance = data.getDistance();
+        Level level = entity.level();
 
         if (!entity.isShiftKeyDown() && distance > 2) {
             data.setDamageMultiplier(0);
             entity.fallDistance = 0;
 
-            if (entity.level().isClientSide) {
+            if (level.isClientSide) {
                 double d = 0.9500000000000001D;
 
                 entity.setDeltaMovement(entity.getDeltaMovement().x, entity.getDeltaMovement().y * -0.9F, entity.getDeltaMovement().z);
                 entity.hasImpulse = true;
                 entity.setOnGround(false);
                 entity.setDeltaMovement(entity.getDeltaMovement().x / d, entity.getDeltaMovement().y, entity.getDeltaMovement().z / d);
+
+                if (ModCommonConfigs.INSTANCE.bouncingDamagesSlimeBoots.get()) {
+                    Dispatcher.sendToServer(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)));
+                }
             }
             else {
                 data.setCanceled(true);
             }
 
-            entity.playSound(SoundEvents.SLIME_SQUISH, 1, 1);
-
-            if (ModCommonConfigs.INSTANCE.bouncingDamagesSlimeBoots.get()) {
-                Dispatcher.sendToServer(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)));
-            }
+            entity.playSound(SoundEvents.SLIME_SQUISH);
 
             for (int i = 0; i < 8; i++) {
                 float random1 = entity.getRandom().nextFloat() * 6.2831855F;
                 float random2 = entity.getRandom().nextFloat() * 0.5F + 0.5F;
                 float xOffset = Mth.sin(random1) * 0.5F * random2;
                 float yOffset = Mth.cos(random1) * 0.5F * random2;
-                entity.level().addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + xOffset, entity.getY(), entity.getZ() + yOffset, 0, 0, 0);
+                level.addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + xOffset, entity.getY(), entity.getZ() + yOffset, 0, 0, 0);
             }
 
             BounceHandler.addBounceHandler(entity, entity.getDeltaMovement().y);
         }
-        else if (!entity.level().isClientSide && entity.isShiftKeyDown()) {
+        else if (!level.isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
         }
     }
