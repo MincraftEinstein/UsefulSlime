@@ -29,12 +29,11 @@
   ],
   "depends": {
     "fabricloader": ">=0.14",
-    "fabric": "*",
+    "fabric": ">=0.90.0",
     "minecraft": ">=1.20.2",
-    "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
+    "java": ">=17",
+    "forgeconfigapiport": ">=20.2.4",
+    "commonnetworking": ">=1.0.4-1.20.2"
   },
   "custom": {
     "catalogue": {

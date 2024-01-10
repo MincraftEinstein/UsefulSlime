@@ -24,7 +24,7 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[48.0.15,)"
+    versionRange="[48.1.0,)"
     ordering="NONE"
     side="BOTH"
 
@@ -32,5 +32,12 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.2, 1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.usefulslime]]
+    modId="commonnetworking"
+    mandatory=true
+    versionRange="[1.0.4-1.20.2,)"
     ordering="NONE"
     side="BOTH"
