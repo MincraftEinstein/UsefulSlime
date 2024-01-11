@@ -75,11 +75,11 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
 
             boolean canWallClimb = getItemBySlot(EquipmentSlot.LEGS).is(ModItems.SLIME_LEGGINGS.get())
                     && getItemBySlot(EquipmentSlot.CHEST).is(ModItems.SLIME_CHESTPLATE.get())
-                    && horizontalCollision;
+                    && horizontalCollision && !super.onClimbable();
 
             usefulSlime$climbingEntity.usefulSlime$setHangClimbing(canHangClimb);
             Dispatcher.sendToServer(new ServerBoundHangClimbPacket(canHangClimb));
-            setNoGravity(usefulSlime$climbingEntity.usefulSlime$canHangClimb());
+            setNoGravity(canHangClimb);
 
             usefulSlime$climbingEntity.usefulSlime$setWallClimbing(canWallClimb);
             Dispatcher.sendToServer(new ServerBoundWallClimbPacket(canWallClimb));

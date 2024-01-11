@@ -23,11 +23,14 @@ public abstract class EntityMixin implements ClimbingEntity {
     @Shadow
     public boolean verticalCollision;
 
-    @Shadow public abstract Level level();
+    @Shadow
+    public abstract Level level();
 
-    @Shadow public abstract Vec3 position();
+    @Shadow
+    public abstract Vec3 position();
 
-    @Shadow public abstract AABB getBoundingBox();
+    @Shadow
+    public abstract AABB getBoundingBox();
 
     @Unique
     private boolean usefulSlime$verticalCollisionAbove;
