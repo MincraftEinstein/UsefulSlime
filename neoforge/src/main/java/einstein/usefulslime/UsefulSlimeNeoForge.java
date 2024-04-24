@@ -21,6 +21,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerFlyableFallEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 
 @Mod(UsefulSlime.MOD_ID)
 public class UsefulSlimeNeoForge {
@@ -34,11 +35,16 @@ public class UsefulSlimeNeoForge {
         NeoForge.EVENT_BUS.addListener(this::onFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(this::onServerStopped);
         ForgeConfigRegistry.INSTANCE.register(UsefulSlime.MOD_ID, ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
     }
 
     void clientSetup(FMLClientSetupEvent event) {
         UsefulSlime.clientSetup();
+    }
+
+    void onServerStopped(ServerStoppedEvent event) {
+        UsefulSlime.onServerStopped(event.getServer());
     }
 
     void onFall(LivingFallEvent event) {

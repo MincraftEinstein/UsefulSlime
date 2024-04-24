@@ -13,6 +13,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -37,11 +38,16 @@ public class UsefulSlimeForge {
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         MinecraftForge.EVENT_BUS.addListener(this::missingMappings);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerTick);
+        MinecraftForge.EVENT_BUS.addListener(this::onServerStopped);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
     }
 
     void clientSetup(FMLClientSetupEvent event) {
         UsefulSlime.clientSetup();
+    }
+
+    void onServerStopped(ServerStoppedEvent event) {
+        UsefulSlime.onServerStopped(event.getServer());
     }
 
     void onFall(LivingFallEvent event) {

@@ -7,6 +7,7 @@ import fuzs.forgeconfigapiport.fabric.api.forge.v4.ForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -35,6 +36,7 @@ public class UsefulSlimeFabric implements ModInitializer, ClientModInitializer {
             entries.addBefore(Items.MUSHROOM_STEW, ModItems.JELLO.get());
         });
 
+        ServerLifecycleEvents.SERVER_STOPPED.register(UsefulSlime::onServerStopped);
         ForgeConfigRegistry.INSTANCE.register(UsefulSlime.MOD_ID, ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
     }
 

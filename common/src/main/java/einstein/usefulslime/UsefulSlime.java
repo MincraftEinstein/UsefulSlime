@@ -11,6 +11,7 @@ import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -87,6 +88,10 @@ public class UsefulSlime {
         else if (!level.isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
         }
+    }
+
+    public static void onServerStopped(MinecraftServer server) {
+        BounceHandler.BOUNCING_ENTITIES.clear();
     }
 
     public static void damageEquipment(LivingEntity entity, EquipmentSlot slot) {
