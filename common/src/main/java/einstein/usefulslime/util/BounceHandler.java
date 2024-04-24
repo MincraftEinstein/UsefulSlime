@@ -1,6 +1,5 @@
 package einstein.usefulslime.util;
 
-import einstein.usefulslime.platform.Services;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -13,8 +12,6 @@ public class BounceHandler {
     public static final IdentityHashMap<Entity, BounceHandler> BOUNCING_ENTITIES = new IdentityHashMap<>();
 
     public final LivingEntity entity;
-    private int timer;
-    private boolean wasInAir;
     private double bounce;
     private int bounceTick;
     private double lastMoveX;
@@ -22,28 +19,24 @@ public class BounceHandler {
 
     public BounceHandler(LivingEntity entity, double bounce) {
         this.entity = entity;
-        this.timer = 0;
-        this.wasInAir = false;
         this.bounce = bounce;
-
-        if (bounce != 0) {
-            bounceTick = entity.tickCount;
-        }
-        else {
-            bounceTick = 0;
-        }
-
+        bounceTick = bounce != 0 ? entity.tickCount : 0;
         BOUNCING_ENTITIES.put(entity, this);
     }
 
     public void onPlayerTick(Player player) {
-        if (player == entity && !player.isFallFlying()) {
+        if (player.getAbilities().flying || entity.onGround() || entity.isSwimming() || entity.isInWaterOrBubble() || entity.onClimbable() || entity.isSpectator() || entity.isFallFlying()) {
+            BOUNCING_ENTITIES.remove(entity);
+            return;
+        }
+
+        if (player == entity) {
             if (player.tickCount == bounceTick) {
                 Vec3 playerMovement = player.getDeltaMovement();
                 player.setDeltaMovement(playerMovement.x, bounce, playerMovement.z);
                 bounceTick = 0;
             }
-            
+
             if (!entity.onGround() && entity.tickCount != bounceTick && (lastMoveX != entity.getDeltaMovement().x || lastMoveZ != entity.getDeltaMovement().z)) {
                 double d = 0.935D;
                 Vec3 entityMovement = entity.getDeltaMovement();
@@ -51,19 +44,6 @@ public class BounceHandler {
                 entity.hasImpulse = true;
                 lastMoveX = entity.getDeltaMovement().x;
                 lastMoveZ = entity.getDeltaMovement().z;
-            }
-
-            if (wasInAir && entity.onGround()) {
-                if (timer == 0) {
-                    timer = entity.tickCount;
-                }
-                else if (entity.tickCount - timer > 5) {
-                    BOUNCING_ENTITIES.remove(entity);
-                }
-            }
-            else {
-                timer = 0;
-                wasInAir = true;
             }
         }
     }
