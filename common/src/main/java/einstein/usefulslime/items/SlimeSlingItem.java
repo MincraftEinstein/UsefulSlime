@@ -4,7 +4,6 @@ import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.util.BounceHandler;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,9 +16,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nonnull;
 
 @SuppressWarnings({"depercation"})
 public class SlimeSlingItem extends Item {
@@ -67,6 +63,10 @@ public class SlimeSlingItem extends Item {
 
                 if (player.getItemBySlot(EquipmentSlot.FEET).is(ModItems.SLIME_BOOTS.get()) && player.getItemBySlot(EquipmentSlot.LEGS).is(ModItems.SLIME_LEGGINGS.get())) {
                     i += 2;
+                }
+
+                if (player.isInWaterOrBubble()) {
+                    i /= 2;
                 }
 
                 player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
