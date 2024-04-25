@@ -12,6 +12,8 @@ public class BounceHandler {
     public static final IdentityHashMap<Entity, BounceHandler> BOUNCING_ENTITIES = new IdentityHashMap<>();
 
     public final LivingEntity entity;
+    private int timer = 0;
+    private boolean wasInAir = false;
     private double bounce;
     private int bounceTick;
     private double lastMoveX;
@@ -25,12 +27,12 @@ public class BounceHandler {
     }
 
     public void onPlayerTick(Player player) {
-        if (player.getAbilities().flying || entity.onGround() || entity.isSwimming() || entity.isInWaterOrBubble() || entity.onClimbable() || entity.isSpectator() || entity.isFallFlying()) {
-            BOUNCING_ENTITIES.remove(entity);
-            return;
-        }
-
         if (player == entity) {
+            if (player.getAbilities().flying || entity.isSwimming() || entity.isInWaterOrBubble() || entity.onClimbable() || entity.isSpectator() || entity.isFallFlying()) {
+                BOUNCING_ENTITIES.remove(entity);
+                return;
+            }
+
             if (player.tickCount == bounceTick) {
                 Vec3 playerMovement = player.getDeltaMovement();
                 player.setDeltaMovement(playerMovement.x, bounce, playerMovement.z);
@@ -45,6 +47,18 @@ public class BounceHandler {
                 lastMoveX = entity.getDeltaMovement().x;
                 lastMoveZ = entity.getDeltaMovement().z;
             }
+
+            if (wasInAir && entity.onGround()) {
+                if (timer == 0) {
+                    timer = entity.tickCount;
+                }
+                else if (entity.tickCount - timer > 5) {
+                    BOUNCING_ENTITIES.remove(entity);
+                }
+                return;
+            }
+            timer = 0;
+            wasInAir = true;
         }
     }
 

@@ -55,7 +55,7 @@ public class UsefulSlime {
 
         if (!entity.isShiftKeyDown() && distance > 2) {
             data.setDamageMultiplier(0);
-            entity.fallDistance = 0;
+            entity.resetFallDistance();
 
             if (level.isClientSide) {
                 double d = 0.9500000000000001D;
@@ -87,6 +87,12 @@ public class UsefulSlime {
         }
         else if (!level.isClientSide && entity.isShiftKeyDown()) {
             data.setDamageMultiplier(0.2F);
+        }
+
+        if (!ModCommonConfigs.INSTANCE.slimeBootSurfing.get()) {
+            if (level.isClientSide && !entity.isShiftKeyDown() && distance < 1.5) {
+                BounceHandler.BOUNCING_ENTITIES.remove(entity);
+            }
         }
     }
 
