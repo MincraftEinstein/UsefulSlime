@@ -41,3 +41,10 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
     versionRange = "1.0.4-1.20.2"
     ordering = "NONE"
     side = "BOTH"
+
+[[dependencies.usefulslime]]
+    modId = "forgeconfigapiport"
+    mandatory = true
+    versionRange = "[20.2.4,)"
+    ordering = "NONE"
+    side = "BOTH"
