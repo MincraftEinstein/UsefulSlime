@@ -1,5 +1,7 @@
 package einstein.usefulslime.platform.services;
 
+import net.minecraft.world.entity.LivingEntity;
+
 public interface IPlatformHelper {
 
     /**
@@ -23,4 +25,6 @@ public interface IPlatformHelper {
      * @return True if in a development environment, false otherwise.
      */
     boolean isDevelopmentEnvironment();
+
+    boolean isFakePlayer(LivingEntity entity);
 }

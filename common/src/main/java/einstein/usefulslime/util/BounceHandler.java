@@ -1,5 +1,6 @@
 package einstein.usefulslime.util;
 
+import einstein.usefulslime.platform.Services;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -67,7 +68,7 @@ public class BounceHandler {
     }
 
     public static void addBounceHandler(LivingEntity entity, double bounce) {
-        if (!(entity instanceof Player)) {
+        if (!(entity instanceof Player) || Services.PLATFORM.isFakePlayer(entity)) {
             return;
         }
 
