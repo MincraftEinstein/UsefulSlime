@@ -13,6 +13,7 @@ public class ModCommonConfigs {
     public final ForgeConfigSpec.BooleanValue hangClimbingDamagesSlimeHelmet;
     public final ForgeConfigSpec.BooleanValue wallClimbingDamagesSlimeChestplateAndLeggings;
     public final ForgeConfigSpec.BooleanValue bouncingDamagesSlimeBoots;
+    public final ForgeConfigSpec.IntValue maxSlipperySlimeBlockSpeed;
 
     public ModCommonConfigs(ForgeConfigSpec.Builder builder) {
         hangClimbingDamagesSlimeHelmet = builder
@@ -29,6 +30,11 @@ public class ModCommonConfigs {
                 .comment("Should Slime Boots be damaged by bouncing")
                 .translation(key("bouncing_damages_slime_boots"))
                 .define("bouncingDamagesSlimeBoots", true);
+
+        maxSlipperySlimeBlockSpeed = builder
+                .comment("The maximum speed an entity on a Slippery Slime Block can go.", "Setting this to a high value can cause lag due to entities being sent hundreds\\thousands of blocks away")
+                .translation(key("max_slippery_slime_block_speed"))
+                .defineInRange("maxSlipperySlimeBlockSpeed", 8, 0, 100);
     }
 
     private static String key(String path) {
