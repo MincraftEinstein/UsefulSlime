@@ -6,6 +6,7 @@ import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.networking.serverbound.ServerBoundHangClimbPacket;
 import einstein.usefulslime.networking.serverbound.ServerBoundWallClimbPacket;
 import einstein.usefulslime.util.ClimbingEntity;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,10 +44,15 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
     @Inject(method = "checkMovementStatistics", at = @At("TAIL"))
     private void checkMovementStatistics(double distanceX, double distanceY, double distanceZ, CallbackInfo ci) {
         if (!level().isClientSide && !isPassenger() && onClimbable()) {
-            if (usefulSlime$climbingEntity.usefulSlime$canWallClimb() && ModCommonConfigs.INSTANCE.wallClimbingDamagesSlimeChestplateAndLeggings.get()) {
+            if (usefulSlime$climbingEntity.usefulSlime$canWallClimb()) {
                 if (distanceY > 0) {
                     usefulSlime$distanceWallClimbed++;
-                    if (usefulSlime$distanceWallClimbed >= 100) {
+
+                    if (usefulSlime$distanceWallClimbed % (random.nextInt(2, 4) * 10) == 0) {
+                        level().playSound(null, getX(), getY(), getZ(), SoundEvents.SLIME_BLOCK_STEP, getSoundSource(), 0.15F, 1);
+                    }
+
+                    if (usefulSlime$distanceWallClimbed >= 100 && ModCommonConfigs.INSTANCE.wallClimbingDamagesSlimeChestplateAndLeggings.get()) {
                         usefulSlime$distanceWallClimbed = 0;
                         damageEquipment(this, EquipmentSlot.CHEST);
                         damageEquipment(this, EquipmentSlot.LEGS);
@@ -54,10 +60,15 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
                 }
             }
 
-            if (usefulSlime$climbingEntity.usefulSlime$canHangClimb() && ModCommonConfigs.INSTANCE.hangClimbingDamagesSlimeHelmet.get()) {
+            if (usefulSlime$climbingEntity.usefulSlime$canHangClimb()) {
                 if (Math.sqrt(distanceX * distanceX + distanceZ * distanceZ) > 0) {
                     usefulSlime$distanceHangClimbed++;
-                    if (usefulSlime$distanceHangClimbed >= 50) {
+
+                    if (usefulSlime$distanceHangClimbed % (random.nextInt(2, 4) * 10) == 0) {
+                        level().playSound(null, getX(), getY(), getZ(), SoundEvents.SLIME_BLOCK_STEP, getSoundSource(), 0.15F, 1);
+                    }
+
+                    if (usefulSlime$distanceHangClimbed >= 50 && ModCommonConfigs.INSTANCE.hangClimbingDamagesSlimeHelmet.get()) {
                         usefulSlime$distanceHangClimbed = 0;
                         damageEquipment(this, EquipmentSlot.HEAD);
                     }
