@@ -7,7 +7,8 @@
   "mixins": [
     "ClimbingPlayerMixin",
     "EntityMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "ServerPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

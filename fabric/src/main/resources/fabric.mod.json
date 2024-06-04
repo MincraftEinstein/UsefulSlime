@@ -28,12 +28,12 @@
     "usefulslime.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14",
-    "fabric": ">=0.90.0",
-    "minecraft": ">=1.20.2",
+    "fabricloader": ">=0.15",
+    "fabric": ">=0.97.0",
+    "minecraft": "1.20.4",
     "java": ">=17",
-    "forgeconfigapiport": ">=20.2.4",
-    "commonnetworking": ">=1.0.4-1.20.2"
+    "forgeconfigapiport": ">=20.4.3",
+    "commonnetworking": ">=1.0.10-1.20.4"
   },
   "custom": {
     "catalogue": {

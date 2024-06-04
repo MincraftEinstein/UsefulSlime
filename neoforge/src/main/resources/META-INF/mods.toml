@@ -23,28 +23,28 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
 
 [[dependencies.usefulslime]]
     modId = "neoforge"
-    mandatory = true
-    versionRange = "[20.2,)"
+    type = "required"
+    versionRange = "[20.4,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.usefulslime]]
     modId = "minecraft"
-    mandatory = true
-    versionRange = "[1.20.2]"
+    type = "required"
+    versionRange = "[1.20.4]"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.usefulslime]]
     modId = "commonnetworking"
-    mandatory = true
-    versionRange = "1.0.4-1.20.2"
+    type = "required"
+    versionRange = "1.0.10-1.20.4"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.usefulslime]]
     modId = "forgeconfigapiport"
-    mandatory = true
-    versionRange = "[20.2.4,)"
+    type = "required"
+    versionRange = "[20.4.3,)"
     ordering = "NONE"
     side = "BOTH"

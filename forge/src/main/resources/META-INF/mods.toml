@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[48,)"
+loaderVersion="[49,)"
 license="Custom license"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
@@ -24,20 +24,20 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[48.1.0,)"
+    versionRange="[49.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.2, 1.21)"
+    versionRange="[1.20.4]"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="commonnetworking"
     mandatory=true
-    versionRange="[1.0.4-1.20.2,)"
+    versionRange="[1.0.10-1.20.2,)"
     ordering="NONE"
     side="BOTH"
