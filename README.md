@@ -56,7 +56,7 @@ You may not
 Feel free to translate this mod into any language or update existing translations. To get your translation into the mod, make a pull request on GitHub with the translated language file
 
 All translators are credited in the list below
-- Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium)
+- Russian: [CrystalDelirium](https://www.curseforge.com/members/crystaldelirium), [Alexander317](https://github.com/Alexander317)
 - French: [Calvineries](https://github.com/Calvineries)
 - Swedish: [realslude](https://github.com/realslude)
 - Ukrainian: [Un roman](https://github.com/unroman)
