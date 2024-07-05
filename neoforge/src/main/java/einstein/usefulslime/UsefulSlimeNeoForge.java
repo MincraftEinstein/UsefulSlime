@@ -18,10 +18,10 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerFlyableFallEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @Mod(UsefulSlime.MOD_ID)
 public class UsefulSlimeNeoForge {
@@ -32,6 +32,7 @@ public class UsefulSlimeNeoForge {
         eventBus.addListener(this::clientSetup);
         NeoForgeRegistryHelper.ITEMS.register(eventBus);
         NeoForgeRegistryHelper.BLOCKS.register(eventBus);
+        NeoForgeRegistryHelper.ARMOR_MATERIAL.register(eventBus);
         NeoForge.EVENT_BUS.addListener(this::onFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
@@ -64,12 +65,10 @@ public class UsefulSlimeNeoForge {
         event.setDistance(data.getDistance());
     }
 
-    void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
-            Player player = event.player;
-            if (BounceHandler.BOUNCING_ENTITIES.containsKey(player)) {
-                BounceHandler.BOUNCING_ENTITIES.get(player).onPlayerTick(player);
-            }
+    void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (BounceHandler.BOUNCING_ENTITIES.containsKey(player)) {
+            BounceHandler.BOUNCING_ENTITIES.get(player).onPlayerTick(player);
         }
     }
 

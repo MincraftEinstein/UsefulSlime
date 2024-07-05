@@ -1,22 +1,18 @@
 modLoader="javafml"
-loaderVersion="[49,)"
+loaderVersion="${forge_loader_version_range}"
 license="Custom license"
 issueTrackerURL="https://github.com/MincraftEinstein/UsefulSlime/issues"
 
 [[mods]]
 	modId="usefulslime"
 	version="${version}"
-	displayName="Useful Slime"
+	displayName="${mod_name}"
 	#updateJSONURL="https://change.me.example.invalid/updates.json"
 	displayURL="http://curseforge.com/minecraft/mc-mods/useful-slime"
 	logoFile="pack.png"
 	credits="The people who suggested the mod to me and Tinkers Construct for the orignal mod"
-	authors="MincraftEinstein"
-	description='''
-Adds some new uses for slime
-
-License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
-'''
+	authors="${mod_author}"
+	description="${description}"
 
 [modproperties.usefulslime]
     catalogueImageIcon="pack.png"
@@ -24,20 +20,20 @@ License: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md
 [[dependencies.usefulslime]]
     modId="forge"
     mandatory=true
-    versionRange="[49.0,)"
+    versionRange="[${forge_version},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.4]"
+    versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.usefulslime]]
     modId="commonnetworking"
     mandatory=true
-    versionRange="[1.0.10-1.20.2,)"
+    versionRange="[${networking_version}-${minecraft_version},)"
     ordering="NONE"
     side="BOTH"

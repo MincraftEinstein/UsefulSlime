@@ -1,9 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "s s",
     "sbs",
-    "sss"
+    "s s"
   ],
   "key": {
     "s": {
@@ -14,6 +13,6 @@
     }
   },
   "result": {
-    "item": "usefulslime:slime_chestplate"
+    "id": "usefulslime:slime_helmet"
   }
 }

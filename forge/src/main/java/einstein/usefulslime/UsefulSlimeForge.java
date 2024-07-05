@@ -33,6 +33,7 @@ public class UsefulSlimeForge {
         modEventBus.addListener(this::clientSetup);
         ForgeRegistryHelper.ITEMS.register(modEventBus);
         ForgeRegistryHelper.BLOCKS.register(modEventBus);
+        ForgeRegistryHelper.ARMOR_MATERIAL.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::onFall);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerFlyFall);

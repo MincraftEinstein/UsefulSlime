@@ -1,10 +1,7 @@
 package einstein.usefulslime;
 
 import commonnetwork.api.Dispatcher;
-import einstein.usefulslime.init.ModBlocks;
-import einstein.usefulslime.init.ModCommonConfigs;
-import einstein.usefulslime.init.ModItems;
-import einstein.usefulslime.init.ModPackets;
+import einstein.usefulslime.init.*;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.networking.serverbound.ServerBoundDamageSlimeBootsPacket;
 import einstein.usefulslime.util.BounceHandler;
@@ -28,6 +25,7 @@ public class UsefulSlime {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
     public static void init() {
+        ModArmorMaterials.init();
         ModBlocks.init();
         ModItems.init();
         ModPackets.init();
@@ -105,10 +103,10 @@ public class UsefulSlime {
     }
 
     public static void damageEquipment(LivingEntity entity, EquipmentSlot slot, int damage) {
-        entity.getItemBySlot(slot).hurtAndBreak(damage, entity, broadcaster -> broadcaster.broadcastBreakEvent(slot));
+        entity.getItemBySlot(slot).hurtAndBreak(damage, entity, slot);
     }
 
     public static ResourceLocation loc(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }

@@ -41,7 +41,7 @@ public class SlimeSlingItem extends Item {
             return;
         }
 
-        int timeUsed = getUseDuration(stack) - timeLeft;
+        int timeUsed = getUseDuration(stack, entity) - timeLeft;
         float i = timeUsed / 20F;
         i = (i * i + i * 2) / 3;
         i *= 4;
@@ -72,7 +72,7 @@ public class SlimeSlingItem extends Item {
                 player.push(vec3.x * -i, vec3.y * -i / 3, vec3.z * -i);
                 BounceHandler.addBounceHandler(player);
                 EquipmentSlot slot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
-                stack.hurtAndBreak(1, player, it -> it.broadcastBreakEvent(slot));
+                stack.hurtAndBreak(1, player, slot);
             }
 
             if (i > 1) {
@@ -87,7 +87,7 @@ public class SlimeSlingItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack stack) {
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 72000;
     }
 

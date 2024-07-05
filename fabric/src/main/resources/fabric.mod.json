@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "usefulslime",
   "version": "${version}",
-  "name": "Useful Slime",
-  "description": "Adds some new uses for slime\n\nLicense: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md",
+  "name": "${mod_name}",
+  "description": "${description}",
   "authors": [
-    "MincraftEinstein"
+    "${mod_author}"
   ],
   "contact": {
     "homepage": "http://curseforge.com/minecraft/mc-mods/useful-slime-fabric",
@@ -28,12 +28,12 @@
     "usefulslime.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.15",
-    "fabric": ">=0.97.0",
-    "minecraft": "1.20.4",
-    "java": ">=17",
-    "forgeconfigapiport": ">=20.4.3",
-    "commonnetworking": ">=1.0.10-1.20.4"
+    "fabricloader": ">=${fabric_version}",
+    "fabric": ">=${fabric_api_version}",
+    "minecraft": ">=${minecraft_version}",
+    "java": ">=${java_version}",
+    "forgeconfigapiport": ">=${config_port_version}",
+    "commonnetworking": ">=${networking_version}-${minecraft_version}"
   },
   "custom": {
     "catalogue": {

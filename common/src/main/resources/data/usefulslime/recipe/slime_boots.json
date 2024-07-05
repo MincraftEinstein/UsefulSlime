@@ -1,9 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sbs",
     "s s",
-    "s s"
+    "b b"
   ],
   "key": {
     "s": {
@@ -14,6 +13,7 @@
     }
   },
   "result": {
-    "item": "usefulslime:slime_leggings"
+    "id": "usefulslime:slime_boots",
+    "count": 1
   }
 }

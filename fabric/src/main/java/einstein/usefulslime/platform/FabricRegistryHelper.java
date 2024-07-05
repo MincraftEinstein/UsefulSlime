@@ -1,8 +1,10 @@
 package einstein.usefulslime.platform;
 
 import einstein.usefulslime.platform.services.RegistryHelper;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -22,5 +24,11 @@ public class FabricRegistryHelper implements RegistryHelper {
     public <T extends Item> Supplier<Item> registerItem(String name, Supplier<T> item) {
         T t = Registry.register(BuiltInRegistries.ITEM, loc(name), item.get());
         return () -> t;
+    }
+
+    @Override
+    public Supplier<Holder<ArmorMaterial>> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
+        Holder<ArmorMaterial> holder = Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, loc(name), material.get());
+        return () -> holder;
     }
 }

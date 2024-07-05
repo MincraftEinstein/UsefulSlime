@@ -1,10 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sbs",
-    "s s"
+    "sts",
+    " b ",
+    " s "
   ],
   "key": {
+    "t": {
+      "item": "minecraft:string"
+    },
     "s": {
       "item": "minecraft:slime_ball"
     },
@@ -13,6 +17,7 @@
     }
   },
   "result": {
-    "item": "usefulslime:slime_helmet"
+    "id": "usefulslime:slime_sling",
+    "count": 1
   }
 }
