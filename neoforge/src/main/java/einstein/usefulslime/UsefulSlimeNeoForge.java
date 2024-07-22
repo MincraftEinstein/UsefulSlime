@@ -74,22 +74,21 @@ public class UsefulSlimeNeoForge {
 
     void onBuildContents(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
-        var entries = event.getEntries();
 
-        if (tab == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            entries.putAfter(new ItemStack(Items.SPYGLASS), new ItemStack(ModItems.SLIME_SLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        if (tab.equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
+            event.insertAfter(new ItemStack(Items.SPYGLASS), new ItemStack(ModItems.SLIME_SLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-        else if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+        else if (tab.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(ModItems.SLIPPERY_SLIME_BLOCK_ITEM.get());
         }
-        else if (tab == CreativeModeTabs.COMBAT) {
-            entries.putAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModItems.SLIME_HELMET.get()), new ItemStack(ModItems.SLIME_CHESTPLATE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModItems.SLIME_CHESTPLATE.get()), new ItemStack(ModItems.SLIME_LEGGINGS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            entries.putAfter(new ItemStack(ModItems.SLIME_LEGGINGS.get()), new ItemStack(ModItems.SLIME_BOOTS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        else if (tab.equals(CreativeModeTabs.COMBAT)) {
+            event.insertAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(new ItemStack(ModItems.SLIME_HELMET.get()), new ItemStack(ModItems.SLIME_CHESTPLATE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(new ItemStack(ModItems.SLIME_CHESTPLATE.get()), new ItemStack(ModItems.SLIME_LEGGINGS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(new ItemStack(ModItems.SLIME_LEGGINGS.get()), new ItemStack(ModItems.SLIME_BOOTS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-        else if (tab == CreativeModeTabs.FOOD_AND_DRINKS) {
-            entries.putBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModItems.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        else if (tab.equals(CreativeModeTabs.FOOD_AND_DRINKS)) {
+            event.insertBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModItems.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 }
