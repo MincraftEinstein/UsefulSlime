@@ -15,6 +15,7 @@ import java.util.function.Supplier;
 public class ModItems {
 
     public static final Supplier<Item> SLIPPERY_SLIME_BLOCK_ITEM = register("slippery_slime_block", () -> new BlockItem(ModBlocks.SLIPPERY_SLIME_BLOCK.get(), new Item.Properties().stacksTo(1)));
+    public static final Supplier<Item> BOUNCY_SLIME_BLOCK_ITEM = register("bouncy_slime_block", () -> new BlockItem(ModBlocks.BOUNCY_SLIME_BLOCK.get(), new Item.Properties()));
     public static final Supplier<Item> SLIME_SLING = register("slime_sling", () -> new SlimeSlingItem(new Item.Properties().durability(64)));
     public static final Supplier<Item> SLIME_BOOTS = register("slime_boots", () -> new SlimeArmor(new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(10)), ArmorItem.Type.BOOTS));
     public static final Supplier<Item> SLIME_LEGGINGS = register("slime_leggings", () -> new SlimeArmor(new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(10)), ArmorItem.Type.LEGGINGS));

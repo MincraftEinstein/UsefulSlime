@@ -1,5 +1,7 @@
 {
   "block.usefulslime.slippery_slime_block": "Slippery Slime Block",
+  "block.usefulslime.bouncy_slime_block": "Bouncy Slime Block",
+  "block.usefulslime.bouncy_slime_block.warning": "This block is a WIP and may have its ID changed in the future",
   "item.usefulslime.slime_sling": "Slime Sling",
   "item.usefulslime.slime_boots": "Slime Boots",
   "item.usefulslime.slime_leggings": "Slime Leggings",
