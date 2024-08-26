@@ -86,6 +86,7 @@ public class UsefulSlimeForge {
         }
         else if (tab == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModItems.SLIPPERY_SLIME_BLOCK_ITEM);
+            event.accept(ModItems.BOUNCY_SLIME_BLOCK_ITEM);
         }
         else if (tab == CreativeModeTabs.COMBAT) {
             entries.putAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

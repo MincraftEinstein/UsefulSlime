@@ -80,6 +80,7 @@ public class UsefulSlimeNeoForge {
         }
         else if (tab.equals(CreativeModeTabs.FUNCTIONAL_BLOCKS)) {
             event.accept(ModItems.SLIPPERY_SLIME_BLOCK_ITEM.get());
+            event.accept(ModItems.BOUNCY_SLIME_BLOCK_ITEM.get());
         }
         else if (tab.equals(CreativeModeTabs.COMBAT)) {
             event.insertAfter(new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.SLIME_HELMET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

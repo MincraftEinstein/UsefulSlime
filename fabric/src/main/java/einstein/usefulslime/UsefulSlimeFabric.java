@@ -26,6 +26,7 @@ public class UsefulSlimeFabric implements ModInitializer, ClientModInitializer {
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.accept(ModItems.SLIPPERY_SLIME_BLOCK_ITEM.get());
+            entries.accept(ModItems.BOUNCY_SLIME_BLOCK_ITEM.get());
         });
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> {
