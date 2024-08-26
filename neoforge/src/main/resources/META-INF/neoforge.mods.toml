@@ -27,7 +27,7 @@ issueTrackerURL = "https://github.com/MincraftEinstein/UsefulSlime/issues"
 [[dependencies.usefulslime]]
     modId = "minecraft"
     type = "required"
-    versionRange = "${minecraft_version_range}"
+    versionRange = "[${minecraft_version}, ${max_minecraft_version})"
     ordering = "NONE"
     side = "BOTH"
 

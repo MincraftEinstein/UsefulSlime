@@ -30,7 +30,7 @@
   "depends": {
     "fabricloader": ">=${fabric_version}",
     "fabric": ">=${fabric_api_version}",
-    "minecraft": ">=${minecraft_version}",
+    "minecraft": ">=${minecraft_version} <${max_minecraft_version}",
     "java": ">=${java_version}",
     "forgeconfigapiport": ">=${config_port_version}",
     "commonnetworking": ">=${networking_version}-${minecraft_version}"
