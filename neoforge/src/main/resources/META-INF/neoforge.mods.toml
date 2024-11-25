@@ -14,6 +14,9 @@ issueTrackerURL = "https://github.com/MincraftEinstein/UsefulSlime/issues"
     authors = "${mod_author}"
     description = "${description}"
 
+[modProperties]
+    fzzy_config = "subtle_effects"
+
 [[mixins]]
     config = "usefulslime.mixins.json"
 
@@ -39,8 +42,8 @@ issueTrackerURL = "https://github.com/MincraftEinstein/UsefulSlime/issues"
     side = "BOTH"
 
 [[dependencies.usefulslime]]
-    modId = "forgeconfigapiport"
+    modId = "fzzy_config"
     type = "required"
-    versionRange = "[${config_port_version},)"
+    versionRange = "[${fzzy_config_version},)"
     ordering = "NONE"
     side = "BOTH"

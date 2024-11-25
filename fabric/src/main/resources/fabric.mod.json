@@ -32,7 +32,7 @@
     "fabric": ">=${fabric_api_version}",
     "minecraft": ">=${minecraft_version} <${max_minecraft_version}",
     "java": ">=${java_version}",
-    "forgeconfigapiport": ">=${config_port_version}",
+    "fzzy_config": ">=${fzzy_config_version}",
     "commonnetworking": ">=${networking_version}-${minecraft_version}"
   },
   "custom": {
@@ -47,6 +47,9 @@
         "modmenu.discord": "https://discord.gg/gSsaFAvrBM",
         "modmenu.kofi": "https://ko-fi.com/mincrafteinstein"
       }
-    }
+    },
+    "fzzy_config": [
+      "subtle_effects"
+    ]
   }
 }

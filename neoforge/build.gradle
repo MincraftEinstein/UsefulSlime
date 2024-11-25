@@ -3,6 +3,12 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    maven {
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
+    }
+}
+
 neoForge {
     version = neoforge_version
 
@@ -46,6 +52,6 @@ neoForge {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    implementation("fuzs.forgeconfigapiport:forgeconfigapiport-neoforge:${config_port_version}")
+    implementation("me.fzzyhmstrs:fzzy_config:${fzzy_config_version}+neoforge")
     implementation("mysticdrew:common-networking-neoforge:${networking_version}-${minecraft_version}")
 }

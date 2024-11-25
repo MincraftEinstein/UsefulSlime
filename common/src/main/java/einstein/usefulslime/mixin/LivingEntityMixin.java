@@ -2,7 +2,6 @@ package einstein.usefulslime.mixin;
 
 import einstein.usefulslime.UsefulSlime;
 import einstein.usefulslime.init.ModBlocks;
-import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -49,7 +48,7 @@ public abstract class LivingEntityMixin extends Entity {
         BlockState belowState = level().getBlockState(belowPos);
 
         if (belowState.is(ModBlocks.SLIPPERY_SLIME_BLOCK.get())) {
-            int max = ModCommonConfigs.INSTANCE.maxSlipperySlimeBlockSpeed.get();
+            int max = UsefulSlime.CONFIGS.maxSlipperySlimeBlockSpeed;
             Vec3 movement = getDeltaMovement();
 
             if (movement.x > max) {

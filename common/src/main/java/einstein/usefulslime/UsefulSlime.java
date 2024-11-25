@@ -6,6 +6,8 @@ import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.networking.serverbound.ServerBoundDamageSlimeBootsPacket;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
+import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
+import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -23,6 +25,7 @@ public class UsefulSlime {
     public static final String MOD_ID = "usefulslime";
     public static final String MOD_NAME = "Useful Slime";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
+    public static final ModConfigs CONFIGS = ConfigApiJava.registerAndLoadConfig(ModConfigs::new, RegisterType.BOTH);
 
     public static void init() {
         ModArmorMaterials.init();
@@ -63,7 +66,7 @@ public class UsefulSlime {
                 entity.setOnGround(false);
                 entity.setDeltaMovement(entity.getDeltaMovement().x / d, entity.getDeltaMovement().y, entity.getDeltaMovement().z / d);
 
-                if (ModCommonConfigs.INSTANCE.bouncingDamagesSlimeBoots.get()) {
+                if (CONFIGS.bouncingDamagesSlimeBoots) {
                     Dispatcher.sendToServer(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)));
                 }
             }
@@ -87,7 +90,7 @@ public class UsefulSlime {
             data.setDamageMultiplier(0.2F);
         }
 
-        if (!ModCommonConfigs.INSTANCE.slimeBootSurfing.get()) {
+        if (!CONFIGS.slimeBootSurfing) {
             if (level.isClientSide && !entity.isShiftKeyDown() && distance < 1.5) {
                 BounceHandler.BOUNCING_ENTITIES.remove(entity);
             }

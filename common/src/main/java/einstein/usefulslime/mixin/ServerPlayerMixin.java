@@ -1,7 +1,6 @@
 package einstein.usefulslime.mixin;
 
 import com.mojang.authlib.GameProfile;
-import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.util.ClimbingEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static einstein.usefulslime.UsefulSlime.CONFIGS;
 import static einstein.usefulslime.UsefulSlime.damageEquipment;
 
 @Mixin(ServerPlayer.class)
@@ -44,7 +44,7 @@ public abstract class ServerPlayerMixin extends Player {
                         level().playSound(null, getX(), getY(), getZ(), SoundEvents.SLIME_BLOCK_STEP, getSoundSource(), 0.15F, 1);
                     }
 
-                    if (usefulSlime$distanceWallClimbed >= 100 && ModCommonConfigs.INSTANCE.wallClimbingDamagesSlimeChestplateAndLeggings.get()) {
+                    if (usefulSlime$distanceWallClimbed >= 100 && CONFIGS.wallClimbingDamagesSlimeChestplateAndLeggings) {
                         usefulSlime$distanceWallClimbed = 0;
                         damageEquipment(this, EquipmentSlot.CHEST);
                         damageEquipment(this, EquipmentSlot.LEGS);
@@ -60,7 +60,7 @@ public abstract class ServerPlayerMixin extends Player {
                         level().playSound(null, getX(), getY(), getZ(), SoundEvents.SLIME_BLOCK_STEP, getSoundSource(), 0.15F, 1);
                     }
 
-                    if (usefulSlime$distanceHangClimbed >= 50 && ModCommonConfigs.INSTANCE.hangClimbingDamagesSlimeHelmet.get()) {
+                    if (usefulSlime$distanceHangClimbed >= 50 && CONFIGS.hangClimbingDamagesSlimeHelmet) {
                         usefulSlime$distanceHangClimbed = 0;
                         damageEquipment(this, EquipmentSlot.HEAD);
                     }

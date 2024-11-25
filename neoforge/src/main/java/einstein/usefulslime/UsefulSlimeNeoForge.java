@@ -1,11 +1,9 @@
 package einstein.usefulslime;
 
-import einstein.usefulslime.init.ModCommonConfigs;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.platform.NeoForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
-import fuzs.forgeconfigapiport.neoforge.api.forge.v4.ForgeConfigRegistry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,7 +34,6 @@ public class UsefulSlimeNeoForge {
         NeoForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(this::onServerStopped);
-        ForgeConfigRegistry.INSTANCE.register(UsefulSlime.MOD_ID, ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
     }
 
     void clientSetup(FMLClientSetupEvent event) {
