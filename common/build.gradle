@@ -18,7 +18,6 @@ dependencies {
     annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
 
     compileOnly group: 'me.fzzyhmstrs', name: 'fzzy_config', version: "${fzzy_config_version}+neoforge"
-    implementation "mysticdrew:common-networking-common:${networking_version}-${minecraft_version}"
 }
 
 configurations {

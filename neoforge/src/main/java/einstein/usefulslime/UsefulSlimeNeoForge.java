@@ -12,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
@@ -26,7 +25,6 @@ public class UsefulSlimeNeoForge {
     public UsefulSlimeNeoForge(IEventBus eventBus) {
         UsefulSlime.init();
         eventBus.addListener(this::onBuildContents);
-        eventBus.addListener(this::clientSetup);
         NeoForgeRegistryHelper.ITEMS.register(eventBus);
         NeoForgeRegistryHelper.BLOCKS.register(eventBus);
         NeoForgeRegistryHelper.ARMOR_MATERIAL.register(eventBus);
@@ -34,10 +32,6 @@ public class UsefulSlimeNeoForge {
         NeoForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(this::onServerStopped);
-    }
-
-    void clientSetup(FMLClientSetupEvent event) {
-        UsefulSlime.clientSetup();
     }
 
     void onServerStopped(ServerStoppedEvent event) {

@@ -1,34 +1,30 @@
 package einstein.usefulslime.networking.serverbound;
 
-import commonnetwork.networking.data.PacketContext;
-import commonnetwork.networking.data.Side;
 import einstein.usefulslime.UsefulSlime;
+import me.fzzyhmstrs.fzzy_config.networking.api.ServerPlayNetworkContext;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.EquipmentSlot;
 
-public class ServerBoundDamageSlimeBootsPacket {
+public record ServerBoundDamageSlimeBootsPacket(int damage) implements CustomPacketPayload {
 
-    public static final ResourceLocation CHANNEL = UsefulSlime.loc("damage_slime_boots");
+    public static final Type<ServerBoundDamageSlimeBootsPacket> TYPE = new Type<>(UsefulSlime.loc("damage_slime_boots"));
+    public static final StreamCodec<FriendlyByteBuf, ServerBoundDamageSlimeBootsPacket> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, ServerBoundDamageSlimeBootsPacket::damage,
+            ServerBoundDamageSlimeBootsPacket::new
+    );
 
-    private final int damage;
-
-    public ServerBoundDamageSlimeBootsPacket(int damage) {
-        this.damage = damage;
-    }
-
-    public static ServerBoundDamageSlimeBootsPacket decode(FriendlyByteBuf buf) {
-        return new ServerBoundDamageSlimeBootsPacket(buf.readInt());
-    }
-
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeInt(damage);
-    }
-
-    public static void handle(PacketContext<ServerBoundDamageSlimeBootsPacket> context) {
-        if (context.side().equals(Side.SERVER)) {
-            ServerBoundDamageSlimeBootsPacket packet = context.message();
-            UsefulSlime.damageEquipment(context.sender(), EquipmentSlot.FEET, packet.damage);
+    public static void handle(ServerBoundDamageSlimeBootsPacket packet, ServerPlayNetworkContext context) {
+        if (context.networkSide().equals(PacketFlow.CLIENTBOUND)) {
+            UsefulSlime.damageEquipment(context.player(), EquipmentSlot.FEET, packet.damage);
         }
+    }
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 }

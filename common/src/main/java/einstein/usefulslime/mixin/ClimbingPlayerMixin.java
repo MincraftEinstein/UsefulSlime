@@ -1,10 +1,10 @@
 package einstein.usefulslime.mixin;
 
-import commonnetwork.api.Dispatcher;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.networking.serverbound.ServerBoundHangClimbPacket;
 import einstein.usefulslime.networking.serverbound.ServerBoundWallClimbPacket;
 import einstein.usefulslime.util.ClimbingEntity;
+import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +24,8 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
     private boolean usefulSlime$canHangClimbOld = false;
     @Unique
     private boolean usefulSlime$canWallClimbOld = false;
+    @Unique
+    private final Player usefulSlime$player = (Player) (Object) this;
 
     @Shadow
     public abstract ItemStack getItemBySlot(EquipmentSlot slot);
@@ -46,14 +48,18 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
             if (canHangClimb != usefulSlime$canHangClimbOld) {
                 usefulSlime$canHangClimbOld = canHangClimb;
                 usefulSlime$climbingEntity.usefulSlime$setHangClimbing(canHangClimb);
-                Dispatcher.sendToServer(new ServerBoundHangClimbPacket(canHangClimb));
+                if (ConfigApiJava.network().canSend(ServerBoundHangClimbPacket.TYPE.id(), usefulSlime$player)) {
+                    ConfigApiJava.network().send(new ServerBoundHangClimbPacket(canHangClimb), usefulSlime$player);
+                }
                 setNoGravity(canHangClimb);
             }
 
             if (canWallClimb != usefulSlime$canWallClimbOld) {
                 usefulSlime$canWallClimbOld = canWallClimb;
                 usefulSlime$climbingEntity.usefulSlime$setWallClimbing(canWallClimb);
-                Dispatcher.sendToServer(new ServerBoundWallClimbPacket(canWallClimb));
+                if (ConfigApiJava.network().canSend(ServerBoundWallClimbPacket.TYPE.id(), usefulSlime$player)) {
+                    ConfigApiJava.network().send(new ServerBoundWallClimbPacket(canWallClimb), usefulSlime$player);
+                }
             }
         }
         return super.onClimbable() || usefulSlime$climbingEntity.usefulSlime$canWallClimb() || usefulSlime$climbingEntity.usefulSlime$canHangClimb();

@@ -1,6 +1,5 @@
 package einstein.usefulslime;
 
-import commonnetwork.api.Dispatcher;
 import einstein.usefulslime.init.*;
 import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.networking.serverbound.ServerBoundDamageSlimeBootsPacket;
@@ -15,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
@@ -31,10 +31,6 @@ public class UsefulSlime {
         ModArmorMaterials.init();
         ModBlocks.init();
         ModItems.init();
-        ModPackets.init();
-    }
-
-    public static void clientSetup() {
         ModPackets.init();
     }
 
@@ -67,7 +63,9 @@ public class UsefulSlime {
                 entity.setDeltaMovement(entity.getDeltaMovement().x / d, entity.getDeltaMovement().y, entity.getDeltaMovement().z / d);
 
                 if (CONFIGS.bouncingDamagesSlimeBoots) {
-                    Dispatcher.sendToServer(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)));
+                    if (ConfigApiJava.network().canSend(ServerBoundDamageSlimeBootsPacket.TYPE.id(), (Player) entity)) {
+                        ConfigApiJava.network().send(new ServerBoundDamageSlimeBootsPacket(Math.round(distance / 10)), (Player) entity);
+                    }
                 }
             }
             else {

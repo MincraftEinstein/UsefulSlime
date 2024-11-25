@@ -52,10 +52,6 @@ repositories {
         name = "FabricMC"
         url = "https://maven.fabricmc.net"
     }
-
-    maven {
-        url = "https://jm.gserv.me/repository/maven-public/"
-    }
 }
 
 // Declare capabilities on the outgoing configurations.
@@ -102,7 +98,6 @@ processResources {
             "mod_id"                       : mod_id,
             "description"                  : project.description,
             "fzzy_config_version"          : fzzy_config_version,
-            "networking_version"           : networking_version
     ]
 
     filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
