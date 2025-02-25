@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "b",
-    "w"
+    "bbb",
+    "bwb",
+    "bbb"
   ],
   "key": {
     "b": {
@@ -14,6 +15,6 @@
   },
   "result": {
     "id": "usefulslime:slippery_slime_block",
-    "count": 1
+    "count": 8
   }
 }
