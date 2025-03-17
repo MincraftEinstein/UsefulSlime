@@ -61,6 +61,7 @@ All translators are credited in the list below
 - Swedish: [realslude](https://github.com/realslude)
 - Ukrainian: [Un roman](https://github.com/unroman)
 - Turkish: [Hexasan](https://github.com/Hexasan)
+- Korean: [sunbatheproductions](https://github.com/sunbatheproductions)
 
 ---
 
