@@ -1,7 +1,9 @@
 package einstein.usefulslime.items;
 
+import einstein.usefulslime.UsefulSlime;
 import einstein.usefulslime.init.ModItems;
 import einstein.usefulslime.util.BounceHandler;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -22,6 +24,18 @@ public class SlimeSlingItem extends Item {
 
     public SlimeSlingItem(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public void verifyComponentsAfterLoad(ItemStack stack) {
+        if (!UsefulSlime.CONFIGS.slimeSlingDurability) {
+            stack.remove(DataComponents.DAMAGE);
+            return;
+        }
+
+        if (!stack.has(DataComponents.DAMAGE)) {
+            stack.setDamageValue(0);
+        }
     }
 
     @Override
@@ -53,6 +67,7 @@ public class SlimeSlingItem extends Item {
         i *= 1;
         HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
 
+        // noinspection ConstantConditions
         if (hitResult != null) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 Vec3 vec3 = player.getLookAngle().normalize();

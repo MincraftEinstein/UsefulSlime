@@ -19,6 +19,7 @@
   "config.usefulslime.maxSlipperySlimeBlockSpeed.desc": "The maximum speed an entity on a Slippery Slime Block can go.\n\n§cWARNING!§r\nSetting this to a high value can cause lag due to entities being sent hundreds\\thousands of blocks away",
   "config.usefulslime.slimeBootSurfing": "Slime Boot Surfing",
   "config.usefulslime.slimeBootSurfing.desc": "Allows the player to keep momentum and continue bouncing endlessly below 1.5 blocks of fall distance by holding the jump key",
+  "config.usefulslime.slimeSlingDurability": "Slime Sling Durability",
   "modmenu.usefulslime.license": "License",
   "modmenu.descriptionTranslation.usefulslime": "Adds some new uses for slime\n\nLicense: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md"
 }
