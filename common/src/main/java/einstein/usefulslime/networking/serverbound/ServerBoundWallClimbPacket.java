@@ -27,4 +27,5 @@ public record ServerBoundWallClimbPacket(boolean canWallClimb) implements Custom
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
+
 }

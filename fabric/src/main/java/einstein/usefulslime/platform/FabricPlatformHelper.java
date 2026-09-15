@@ -26,4 +26,5 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public boolean isFakePlayer(LivingEntity entity) {
         return entity instanceof FakePlayer;
     }
+
 }

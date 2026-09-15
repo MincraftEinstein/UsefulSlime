@@ -11,4 +11,5 @@ public interface ClimbingEntity {
     void usefulSlime$setHangClimbing(boolean hangClimbing);
 
     void usefulSlime$setWallClimbing(boolean wallClimbing);
+
 }

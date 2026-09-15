@@ -42,4 +42,5 @@ public class LivingFallData {
     public boolean isCanceled() {
         return canceled;
     }
+
 }

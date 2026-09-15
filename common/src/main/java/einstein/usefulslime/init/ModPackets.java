@@ -20,4 +20,5 @@ public class ModPackets {
     private static <T extends CustomPacketPayload> void registerC2S(CustomPacketPayload.Type<T> type, StreamCodec<FriendlyByteBuf, T> codec, C2SPayloadHandler<T> handler) {
         ConfigApiJava.network().registerC2S(type, codec, handler);
     }
+
 }

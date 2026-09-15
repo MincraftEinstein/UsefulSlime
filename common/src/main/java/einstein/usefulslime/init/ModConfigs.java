@@ -20,4 +20,5 @@ public class ModConfigs extends Config {
     public ModConfigs() {
         super(UsefulSlime.loc("main"));
     }
+
 }

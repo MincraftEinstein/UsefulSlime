@@ -31,4 +31,5 @@ public class FabricRegistryHelper implements RegistryHelper {
         Holder<ArmorMaterial> holder = Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, loc(name), material.get());
         return () -> holder;
     }
+
 }

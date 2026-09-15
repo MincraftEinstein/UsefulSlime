@@ -110,4 +110,5 @@ public class UsefulSlime {
     public static ResourceLocation loc(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
+
 }

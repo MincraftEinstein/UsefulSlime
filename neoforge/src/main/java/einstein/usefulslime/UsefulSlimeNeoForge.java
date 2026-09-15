@@ -82,4 +82,5 @@ public class UsefulSlimeNeoForge {
             event.insertBefore(new ItemStack(Items.MUSHROOM_STEW), new ItemStack(ModItems.JELLO.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
+
 }

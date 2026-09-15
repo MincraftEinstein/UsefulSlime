@@ -80,4 +80,5 @@ public abstract class EntityMixin implements ClimbingEntity {
     public void usefulSlime$setWallClimbing(boolean wallClimbing) {
         usefulSlime$canWallClimb = wallClimbing;
     }
+
 }

@@ -27,4 +27,5 @@ public class ModArmorMaterials {
 
     public static void init() {
     }
+
 }

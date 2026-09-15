@@ -37,4 +37,5 @@ public class PlayerMixin {
         }
         return distance;
     }
+
 }

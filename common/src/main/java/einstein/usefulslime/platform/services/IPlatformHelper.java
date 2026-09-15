@@ -27,4 +27,5 @@ public interface IPlatformHelper {
     boolean isDevelopmentEnvironment();
 
     boolean isFakePlayer(LivingEntity entity);
+
 }

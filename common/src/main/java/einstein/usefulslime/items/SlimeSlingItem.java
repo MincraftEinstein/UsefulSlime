@@ -95,4 +95,5 @@ public class SlimeSlingItem extends Item {
     public boolean isValidRepairItem(ItemStack stack, ItemStack ingredientStack) {
         return ingredientStack.is(Items.SLIME_BALL);
     }
+
 }

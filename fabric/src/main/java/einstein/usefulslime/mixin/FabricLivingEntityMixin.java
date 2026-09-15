@@ -26,4 +26,5 @@ public abstract class FabricLivingEntityMixin {
     private float modifyFallDamageMultiplier(float damageMultiplier) {
         return EntityBounceModifiers.modifyFallDamageMultiplier(damageMultiplier);
     }
+
 }

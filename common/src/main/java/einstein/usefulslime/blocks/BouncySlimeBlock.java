@@ -64,4 +64,5 @@ public class BouncySlimeBlock extends HalfTransparentBlock {
 
         super.stepOn(level, pos, state, entity);
     }
+
 }

@@ -21,4 +21,5 @@ public class ModBlocks {
     private static <T extends Block> Supplier<Block> register(String name, Supplier<T> supplier) {
         return Services.REGISTRY.registerBlock(name, supplier);
     }
+
 }

@@ -27,4 +27,5 @@ public record ServerBoundHangClimbPacket(boolean canHangClimb) implements Custom
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
+
 }

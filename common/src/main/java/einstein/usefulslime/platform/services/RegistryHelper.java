@@ -14,4 +14,5 @@ public interface RegistryHelper {
     <T extends Item> Supplier<Item> registerItem(String name, Supplier<T> item);
 
     Supplier<Holder<ArmorMaterial>> registerArmorMaterial(String name, Supplier<ArmorMaterial> material);
+
 }

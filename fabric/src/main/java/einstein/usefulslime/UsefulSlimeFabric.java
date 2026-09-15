@@ -41,4 +41,5 @@ public class UsefulSlimeFabric implements ModInitializer, ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SLIPPERY_SLIME_BLOCK.get(), RenderType.translucent());
     }
+
 }

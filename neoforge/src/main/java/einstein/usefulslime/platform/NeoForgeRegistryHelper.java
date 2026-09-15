@@ -32,4 +32,5 @@ public class NeoForgeRegistryHelper implements RegistryHelper {
         Holder<ArmorMaterial> holder = ARMOR_MATERIAL.register(name, material);
         return () -> holder;
     }
+
 }

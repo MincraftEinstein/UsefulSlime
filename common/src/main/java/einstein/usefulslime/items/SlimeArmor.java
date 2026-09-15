@@ -8,4 +8,5 @@ public class SlimeArmor extends ArmorItem {
     public SlimeArmor(Properties properties, Type type) {
         super(ModArmorMaterials.SLIME_MATERIAL.get(), type, properties);
     }
+
 }

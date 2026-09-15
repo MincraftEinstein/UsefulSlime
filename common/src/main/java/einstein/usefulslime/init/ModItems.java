@@ -29,4 +29,5 @@ public class ModItems {
     private static <T extends Item> Supplier<Item> register(String name, Supplier<T> supplier) {
         return Services.REGISTRY.registerItem(name, supplier);
     }
+
 }

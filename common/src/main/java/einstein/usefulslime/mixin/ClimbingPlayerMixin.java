@@ -64,4 +64,5 @@ public abstract class ClimbingPlayerMixin extends LivingEntity {
         }
         return super.onClimbable() || usefulSlime$climbingEntity.usefulSlime$canWallClimb() || usefulSlime$climbingEntity.usefulSlime$canHangClimb();
     }
+
 }

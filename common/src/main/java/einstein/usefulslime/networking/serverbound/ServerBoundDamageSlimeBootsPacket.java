@@ -27,4 +27,5 @@ public record ServerBoundDamageSlimeBootsPacket(int damage) implements CustomPac
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
+
 }

@@ -27,4 +27,5 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     public boolean isFakePlayer(LivingEntity entity) {
         return entity instanceof FakePlayer;
     }
+
 }
