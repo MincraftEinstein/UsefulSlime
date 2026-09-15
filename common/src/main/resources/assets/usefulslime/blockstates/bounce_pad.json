@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "direction=0": {
+      "model": "usefulslime:block/bounce_pad"
+    },
+    "direction=1": {
+      "model": "usefulslime:block/bounce_pad_corner"
+    },
+    "direction=2": {
+      "model": "usefulslime:block/bounce_pad",
+      "y": 90
+    },
+    "direction=3": {
+      "model": "usefulslime:block/bounce_pad_corner",
+      "y": 90
+    },
+    "direction=4": {
+      "model": "usefulslime:block/bounce_pad",
+      "y": 180
+    },
+    "direction=5": {
+      "model": "usefulslime:block/bounce_pad_corner",
+      "y": 180
+    },
+    "direction=6": {
+      "model": "usefulslime:block/bounce_pad",
+      "y": 270
+    },
+    "direction=7": {
+      "model": "usefulslime:block/bounce_pad_corner",
+      "y": 270
+    }
+  }
+}

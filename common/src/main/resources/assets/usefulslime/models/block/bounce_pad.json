@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "#bottom",
+		"point": "usefulslime:block/bounce_pad_point",
+		"top": "minecraft:block/slime_block",
+		"side": "usefulslime:block/bounce_pad_side",
+		"bottom": "usefulslime:block/bounce_pad_bottom"
+	},
+	"elements": [
+		{
+			"name": "bottom",
+			"from": [0, 0, 0],
+			"to": [16, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [0, 8, 16, 16], "texture": "#side"},
+				"east": {"uv": [0, 8, 16, 16], "texture": "#side"},
+				"south": {"uv": [0, 8, 16, 16], "texture": "#side"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [2, 1, 2],
+			"to": [14, 10, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [2, 6, 14, 15], "texture": "#top"},
+				"east": {"uv": [2, 6, 14, 15], "texture": "#top"},
+				"south": {"uv": [2, 6, 14, 15], "texture": "#top"},
+				"west": {"uv": [2, 6, 14, 15], "texture": "#top"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#top"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#top"}
+			}
+		},
+		{
+			"name": "point",
+			"from": [6, 8, 1],
+			"to": [10, 11, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [4, 7, 8, 10], "texture": "#point"},
+				"east": {"uv": [0, 7, 4, 10], "texture": "#point"},
+				"south": {"uv": [12, 7, 16, 10], "texture": "#point"},
+				"west": {"uv": [8, 7, 12, 10], "texture": "#point"},
+				"up": {"uv": [4, 3, 8, 7], "rotation": 180, "texture": "#point"},
+				"down": {"uv": [8, 3, 12, 7], "texture": "#point"}
+			}
+		}
+	]
+}

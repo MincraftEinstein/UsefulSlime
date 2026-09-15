@@ -2,6 +2,7 @@
   "block.usefulslime.slippery_slime_block": "Склизкий блок слизи",
   "block.usefulslime.bouncy_slime_block": "Упругий блок слизи",
   "block.usefulslime.bouncy_slime_block.warning": "Этот блок находится в стадии разработки, и его идентификатор в будущем может быть изменён.",
+  "block.usefulslime.bounce_pad": "Упругая подушка",
   "item.usefulslime.slime_sling": "Слизневая рогатка",
   "item.usefulslime.slime_boots": "Слизневые ботинки",
   "item.usefulslime.slime_leggings": "Слизневые поножи",
@@ -19,6 +20,8 @@
   "config.usefulslime.maxSlipperySlimeBlockSpeed.desc": "Максимальная достигаемая скорость передвижения существа по слизистому блоку.\n\n§cВНИМАНИЕ§r!\nУстановка слишком высокого значения параметра может вызвать зависание игры из-за звуков,\nиздаваемых существами при движении по десяткам тысяч слизистых блоков.",
   "config.usefulslime.slimeBootSurfing": "Скольжение слизневыми ботинками",
   "config.usefulslime.slimeBootSurfing.desc": "Позволяет игроку поддерживать темп и продолжать вечно отскакивать при расстоянии падения ниже 1.5 блока, удерживая клавишу для прыжка.",
+  "config.usefulslime.bouncePadBounceSound": "Звук упругого отскока",
+  "config.usefulslime.bouncePadBounceSound.desc": "Если значение установлено на §qtrue§r, то при отскоке сущности на упругой подушке будет воспроизводиться звук слизи.",
   "modmenu.usefulslime.license": "Лицензия",
   "modmenu.descriptionTranslation.usefulslime": "Добавляет несколько применения слизи.\n\nЛицензия: https://github.com/MincraftEinstein/UsefulSlime/blob/main/LICENSE.md"
 }

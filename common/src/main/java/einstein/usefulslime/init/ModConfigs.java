@@ -20,6 +20,7 @@ public class ModConfigs extends Config {
     public boolean slimeBootSurfing = false;
     @RequiresAction(action = Action.RESTART)
     public boolean slimeSlingDurability = true;
+    public boolean bouncePadBounceSound = true;
 
     public ModConfigs() {
         super(UsefulSlime.loc("main"));
