@@ -1,7 +1,6 @@
 package einstein.usefulslime;
 
 import einstein.usefulslime.init.ModItems;
-import einstein.usefulslime.platform.NeoForgeRegistryHelper;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
 import net.minecraft.resources.ResourceKey;
@@ -25,9 +24,6 @@ public class UsefulSlimeNeoForge {
     public UsefulSlimeNeoForge(IEventBus eventBus) {
         UsefulSlime.init();
         eventBus.addListener(this::onBuildContents);
-        NeoForgeRegistryHelper.ITEMS.register(eventBus);
-        NeoForgeRegistryHelper.BLOCKS.register(eventBus);
-        NeoForgeRegistryHelper.ARMOR_MATERIAL.register(eventBus);
         NeoForge.EVENT_BUS.addListener(this::onFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerFlyFall);
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
