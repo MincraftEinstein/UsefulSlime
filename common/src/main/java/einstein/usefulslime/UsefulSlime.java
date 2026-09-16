@@ -5,9 +5,11 @@ import einstein.usefulslime.items.SlimeArmor;
 import einstein.usefulslime.networking.serverbound.ServerBoundDamageSlimeBootsPacket;
 import einstein.usefulslime.util.BounceHandler;
 import einstein.usefulslime.util.LivingFallData;
+import einstein.usefulslime.util.RegistryAliases;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.sounds.SoundEvents;
@@ -26,12 +28,24 @@ public class UsefulSlime {
     public static final String MOD_NAME = "Useful Slime";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
     public static final ModConfigs CONFIGS = ConfigApiJava.registerAndLoadConfig(ModConfigs::new, RegisterType.BOTH);
+    public static final ResourceLocation BOUNCE_PAD_ID = loc("bounce_pad");
 
     public static void init() {
         ModArmorMaterials.init();
         ModBlocks.init();
         ModItems.init();
         ModPackets.init();
+
+        addTBPAlias("bounce_pad");
+        addTBPAlias("skyslime_bounce_pad");
+        addTBPAlias("enderslime_bounce_pad");
+        addTBPAlias("ichor_bounce_pad");
+    }
+
+    private static void addTBPAlias(String oldName) {
+        ResourceLocation oldId = tbpLoc(oldName);
+        ((RegistryAliases) BuiltInRegistries.ITEM).addAlias(oldId, BOUNCE_PAD_ID);
+        ((RegistryAliases) BuiltInRegistries.BLOCK).addAlias(oldId, BOUNCE_PAD_ID);
     }
 
     public static void onFall(LivingFallData data) {
@@ -111,4 +125,7 @@ public class UsefulSlime {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
+    public static ResourceLocation tbpLoc(String path) {
+        return ResourceLocation.fromNamespaceAndPath("tbouncepad", path);
+    }
 }

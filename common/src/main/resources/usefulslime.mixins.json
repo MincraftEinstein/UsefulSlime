@@ -8,6 +8,7 @@
     "ClimbingPlayerMixin",
     "EntityMixin",
     "LivingEntityMixin",
+    "RegistryMixin",
     "ServerPlayerMixin"
   ],
   "injectors": {
